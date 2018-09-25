@@ -1,0 +1,107 @@
+Classes:
+
+- program
+- weather
+- customer
+- game
+- inventory
+- player
+- store
+- day
+- userinterface
+-------------------------------------
+Method Variables:
+
+- program = none
+- weather
+	- currentTemperature
+	- isRaining
+	- isSunny
+	- isDry
+	- weeklyForecast	
+	
+- customer
+	- buyingChance
+	- max price
+- game
+	- players
+	- customers
+	- gameRunning
+	- daysRemaining
+	- currentDay
+- inventory
+	- sugar
+	- lemons
+	- cups
+	- ice
+- player
+	- name
+	- store
+
+- store
+	- current price
+	- recipe
+	- money
+
+- day
+	- weather
+	- customers	
+	- forecast
+	
+- userinterface
+	***
+-----------------------------------------
+Methods: 
+
+- weather
+	- SetWeather
+	- GetForecast(day)
+		- GetForecast(week)
+	- SetTemperature
+	- SetRain
+		- if not 
+		- SetDryness
+	- DisplayWeather	
+	
+- customer
+	- SetBuyingChance
+	- Buy
+- game
+	- RunGame
+	- displayDayResults
+	- IncrementProfit
+	- SetPlayers
+	- 
+	
+- inventory
+	- Buy(sugar, lemons, ice, cups)
+	- DisplayInventory
+	- 
+	
+- player
+	- DisplayInfo
+	- 
+	
+- store
+	- SetRecipe
+	- SetPrice
+	- DisplayInfo
+	- 
+	
+- day
+	- GetCustomers
+	- 
+- userinterface
+	- ***
+Algorithm: 
+
+get player name
+show ui -
+	- set recipe or stay default (optional after first time)
+	- show weekly forecast(first time only) then daily
+	
+	Loop: 
+	- show today's actual weather
+	- give menu with choice to change reciple, buy supplies, check weeklyForecast, tomorrows forecast
+	- 
+	- buy supplies

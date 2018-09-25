@@ -27,7 +27,7 @@ Method Variables:
 	- players
 	- customers
 	- gameRunning
-	- daysRemaining
+	- totalDays
 	- currentDay
 - inventory
 	- sugar

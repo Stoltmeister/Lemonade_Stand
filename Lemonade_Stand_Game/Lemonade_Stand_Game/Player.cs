@@ -9,12 +9,21 @@ namespace Lemonade_Stand_Game
     class Player
     {
         //member variables
+        string name;
+        Store PlayerOneStore;
 
         //constructor
-        public Player()
+        public Player(string name)
+        {
+            this.name = name;
+            PlayerOneStore = new Store();
+
+        }
+
+        //methods
+        private void DisplayInfo()
         {
 
         }
-        //methods
     }
 }

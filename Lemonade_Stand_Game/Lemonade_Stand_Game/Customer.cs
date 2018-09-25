@@ -9,12 +9,20 @@ namespace Lemonade_Stand_Game
     class Customer
     {
         //member variables
-
+        double buyingChance;
+        double maxPrice;
+        bool boughtLemonade;
         //constructor
         public Customer()
         {
-
+            // set maxPrice at random within certain range
+            // set buyingChance at random within certain range
         }
         //methods
+
+        private void Buy(Day currentDay)
+        {
+
+        }
     }
 }

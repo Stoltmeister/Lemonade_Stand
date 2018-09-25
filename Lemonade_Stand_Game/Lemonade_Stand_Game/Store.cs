@@ -11,12 +11,14 @@ namespace Lemonade_Stand_Game
         //member variables
         double currentPrice;
         int[] recipe;
-        double money;
+        double startingCash;
+        double currentCash;
 
         //constructor
         public Store()
         {
-            money = 20.00;
+            startingCash = 20.00;
+            currentCash = startingCash;
             recipe = [5, 5, 5];
         }
         //methods
@@ -24,7 +26,6 @@ namespace Lemonade_Stand_Game
         private void ChangeRecipe()
         {
             // add later
-
         }
     }
 }

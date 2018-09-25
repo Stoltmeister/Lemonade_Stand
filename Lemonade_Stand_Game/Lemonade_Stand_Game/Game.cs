@@ -11,21 +11,32 @@ namespace Lemonade_Stand_Game
         //member variables
         Player playerOne;
         bool gameRunning;
-        int currentDay;
         int totalDays;
-        Day dayOne;
+        int numberOfCustomers;
+        Day currentDay;
+        Customer[] customerArray;
+        Random randNum;
 
         //constructor
         public Game()
-        {
+        {            
             gameRunning = true;
             totalDays = 7;
-            dayOne = new Day();
+            currentDay = new Day(1);
+            numberOfCustomers = 100;
+            customerArray = new Customer[numberOfCustomers];
+            randNum = new Random();
+
+            for (int i = 0; i <= numberOfCustomers; i++)
+            {
+                customerArray[i] = new Customer(randNum);
+            }
         }
 
         //methods
         public void RunGame()
         {
+            // Initial Game Setup
             DisplayRules();
             SetPlayers();
 
@@ -33,7 +44,9 @@ namespace Lemonade_Stand_Game
             while (gameRunning)
             {
                 // main menu
-                
+                DisplayMainMenu(currentDay, playerOne);
+
+
             }
         }
 
@@ -50,10 +63,11 @@ namespace Lemonade_Stand_Game
             playerOne = new Player(name);
         }
 
-        private void DisplayMainMenu()
+        private void DisplayMainMenu(Day currentDay, Player currentPlayer)
         {
             // options: change recipe(hint at user to check first time?), buy supplies, check weeklyForecast, check tomorrows forecast
             // always shows current day number
+
         }
 
         private void IncrementProfit(Player player, int profit)
@@ -64,6 +78,13 @@ namespace Lemonade_Stand_Game
         private void DisplayDayResults(Day pastDay)
         {
 
-        }        
+        } 
+        
+        // notes:
+        // change all customers percentage of buying when price is
+        // in different ranges (25cent ranges?)
+        //
+        //
+        //
     }
 }

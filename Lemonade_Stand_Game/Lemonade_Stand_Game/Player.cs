@@ -10,7 +10,7 @@ namespace Lemonade_Stand_Game
     {
         //member variables
         string name;
-        Store PlayerOneStore;
+        Store PlayerOneStore;        
 
         //constructor
         public Player(string name)
@@ -20,10 +20,6 @@ namespace Lemonade_Stand_Game
 
         }
 
-        //methods
-        private void DisplayInfo()
-        {
-
-        }
+        //methods        
     }
 }

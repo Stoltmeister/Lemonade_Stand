@@ -13,16 +13,18 @@ namespace Lemonade_Stand_Game
         double maxPrice;
         bool boughtLemonade;
         //constructor
-        public Customer()
+        public Customer(Random randomNumber)
         {
             // set maxPrice at random within certain range
             // set buyingChance at random within certain range
         }
+
         //methods
 
         private void Buy(Day currentDay)
         {
-
+            // changes odds of buying based on weather
+            
         }
     }
 }

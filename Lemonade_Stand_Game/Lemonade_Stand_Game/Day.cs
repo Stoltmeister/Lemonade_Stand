@@ -20,6 +20,11 @@ namespace Lemonade_Stand_Game
         }
 
         //methods
+        public int DayNumber
+        {
+            get => dayNumber;
+
+        }
 
     }
 }

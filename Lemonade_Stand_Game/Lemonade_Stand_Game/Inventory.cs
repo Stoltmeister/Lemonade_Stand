@@ -31,7 +31,7 @@ namespace Lemonade_Stand_Game
                 iceCubes + " ice cubes \n");
         }
         
-        private void addSupplies(int amount, int itemNumber)
+        private void AddSupplies(int amount, int itemNumber)
         {
             if (itemNumber == 1)
             {
@@ -49,7 +49,6 @@ namespace Lemonade_Stand_Game
             {
                 Console.WriteLine("error error");
             }
-
         }
     }
 }

@@ -10,7 +10,7 @@ namespace Lemonade_Stand_Game
     {
         //member variables
         double currentPrice;
-        int[] recipe;
+        Recipe recipe;
         double startingCash;
         public double currentCash;
         double costPerPitcher;
@@ -21,7 +21,7 @@ namespace Lemonade_Stand_Game
         {
             startingCash = 20.00;
             currentCash = startingCash;
-            recipe = new int[] { 5, 5, 5 }; // per pitcher (serves 5)
+            recipe = new Recipe(); // per pitcher (serves 5)
             inventory = new Inventory();
         }
 
@@ -33,16 +33,16 @@ namespace Lemonade_Stand_Game
 
         public double GetCostPerPitcher()
         {
-            costPerPitcher += inventory.LemonPrice * recipe[0];
-            costPerPitcher += inventory.SugarPrice * recipe[1];
-            costPerPitcher += inventory.IcePrice * recipe[2];
+           // costPerPitcher += inventory.LemonPrice * recipe[0];
+           // costPerPitcher += inventory.SugarPrice * recipe[1];
+           // costPerPitcher += inventory.IcePrice * recipe[2];
 
             return costPerPitcher;
         }
 
         private void ChangeRecipe()
         {
-            // add after MVP
+            // add 
         }
 
         private void SetPrice(double newPrice)
@@ -67,6 +67,11 @@ namespace Lemonade_Stand_Game
             Console.WriteLine("Your current recipe ratio is " + recipe + " (lemons, cups of sugar, and ice cubes) \n");
             Console.WriteLine("Current price per cup is set to $" + currentPrice + "\n");
             Console.WriteLine("Total cash available is $" + currentCash + "\n");
+        }
+
+        public double GetTotalProfit()
+        {
+            return currentCash - startingCash;
         }
 
     }

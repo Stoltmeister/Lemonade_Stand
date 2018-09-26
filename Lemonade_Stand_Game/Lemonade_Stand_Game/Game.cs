@@ -16,6 +16,7 @@ namespace Lemonade_Stand_Game
         int customers;
         Day currentDay;
         Day yesterday; // set currentDay to yesterday after all actions for the day are complete
+        Day[] days;
         Customer[] customerArray;
         Weather[] weeklyForecast;
         Weather firstDayWeather;
@@ -25,7 +26,8 @@ namespace Lemonade_Stand_Game
         public Game()
         {            
             gameRunning = true;
-            totalDays = 7;            
+            totalDays = 7;
+            days = new Day[totalDays];
             numberOfPossibleCustomers = 100;
             customerArray = new Customer[numberOfPossibleCustomers];
             weeklyForecast = new Weather[totalDays];
@@ -38,7 +40,7 @@ namespace Lemonade_Stand_Game
             }
 
             // set up weeklyForecast
-            for (int j = 0; j <= weeklyForecast.Length; j++)
+            for (int j = 0; j < weeklyForecast.Length; j++)
             {
                 weeklyForecast[j] = new Weather(true);
             }
@@ -54,9 +56,6 @@ namespace Lemonade_Stand_Game
             {
                 currentDay = new Day(1, weeklyForecast[0]);
             }
-
-
-
         }
 
         //methods
@@ -69,18 +68,31 @@ namespace Lemonade_Stand_Game
             //main loop
             while (gameRunning)
             {
+                // clear console when?
+
+                // create new day
                 // main menu
                 DisplayMainMenu(currentDay, playerOne);
 
                 //end of day
+                DisplayDayResults(currentDay, playerOne, CalculateDailyProfit(playerOne));
                 yesterday = currentDay;
+                Console.ReadLine();
+                gameRunning = !gameRunning; //for testing
+                ContinueGame();
             }
         }
 
         private void DisplayRules()
         {
             // shows rules at start of game
-            string rules = "";
+            string rules = "Welcome to the Lemonade Stand Game! \n \n" +
+                "Here are the rules of how to play : \n " +
+                "You are setting up for a week of running a lemonade stand looking to make the most money possible! \n" +
+                "Each day you have the chance to change the recipe, buy supplies and change your price using previous days data to perfect your operation. \n" +
+                "Weather conditions greatly affect the demand for lemonade so make sure to stock your inventory and set prices accordingly \n" +
+                "Be sure to check out the daily/weekly forecasts for an idea of what you should do. Be careful though as forecasts aren't always perfect! \n";
+                
             Console.WriteLine(rules);
         }
 
@@ -88,20 +100,30 @@ namespace Lemonade_Stand_Game
         {
             Console.WriteLine("Please enter your name: ");
             string name = Console.ReadLine();
+            Console.WriteLine("\n");
             playerOne = new Player(name);
         }
 
         private void DisplayMainMenu(Day currentDay, Player currentPlayer)
         {
+            // AFTER MVP: two player
             // options: change recipe(hint at user to check first time?), buy supplies, check weeklyForecast, check tomorrows forecast
             // always shows current day number
-            Console.WriteLine("Welcome to Day " + currentDay.DayNumber + "! \n" +
-                "Here are the results from the previous day: ");
-            DisplayDayResults(yesterday, playerOne);
-            Console.WriteLine("What would you like to do?");
+            Console.WriteLine("Welcome to Day " + currentDay.DayNumber + "! \n");            
+            Console.WriteLine("What would you like to do? " +
+                "1 = Show tomorrows weather, 2 = Show full week forecast, 3 = Change Recipe \n" +
+                "4 = Buy Ingredients, 5 = ");
+            try
+            {
+                int input = Int32.Parse(Console.ReadLine());
+            }
+            catch
+            {
+
+            }
         }
 
-        private void CalculateDailyProfit(Player player)
+        private double CalculateDailyProfit(Player player)
         {
             for (int i = 0; i < numberOfPossibleCustomers; i++)
             {
@@ -114,12 +136,15 @@ namespace Lemonade_Stand_Game
             double expenses = playerOne.PlayerOneStore.GetCostPerPitcher();
             profit -= expenses;
             playerOne.PlayerOneStore.currentCash += profit;
+
+            return profit;
         }
 
-        private void DisplayDayResults(Day pastDay, Player player)
+        private void DisplayDayResults(Day pastDay, Player player, double profit)
         {
             // show daily profit/loss, total profit/loss, and weather
-            Console.WriteLine("Yesterday " + "");
+            Console.WriteLine("Today's profit/loss was $" + profit + "\n");
+            Console.WriteLine("Total profit/loss is $" + player.PlayerOneStore.GetTotalProfit() + "\n");
         }
 
         private string GetForecast(Day tommorrow)
@@ -127,6 +152,20 @@ namespace Lemonade_Stand_Game
             string forecast = "The forecast for tomorrow is: " + weeklyForecast[tommorrow.DayNumber];
 
             return forecast;
-        }        
+        }
+        
+        private void ContinueGame()
+        {
+            if (currentDay.DayNumber == 7)
+            {
+                // display game results
+                gameRunning = false;
+            }
+            else if (playerOne.PlayerOneStore.currentCash < .01)
+            {
+                // display game results
+                gameRunning = false;
+            }
+        }
     }
 }

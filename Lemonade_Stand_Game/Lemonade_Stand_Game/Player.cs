@@ -11,6 +11,7 @@ namespace Lemonade_Stand_Game
         //member variables
         string name;
         Store playerOneStore;
+        Wallet wallet;
 
         //constructor
         public Player(string name)

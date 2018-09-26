@@ -55,7 +55,6 @@ namespace Lemonade_Stand_Game
 
             player.PlayerOneStore.currentCash -= products[productIndex].Price * quantity;
 
-
         }
     }
 }

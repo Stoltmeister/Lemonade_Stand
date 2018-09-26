@@ -12,15 +12,10 @@ namespace Lemonade_Stand_Game
         Player playerOne;
         bool gameRunning;
         int totalDays;
-        int numberOfPossibleCustomers;
-        int customers;
         Day currentDay;
-        Day yesterday; // set currentDay to yesterday after all actions for the day are complete
         Day[] days;
-        Customer[] customerArray;
         Weather[] weeklyForecast;
-        Weather firstDayWeather;
-        Random randNum;
+        Weather todaysWeather;
 
         //constructor
         public Game()
@@ -28,16 +23,7 @@ namespace Lemonade_Stand_Game
             gameRunning = true;
             totalDays = 7;
             days = new Day[totalDays];
-            numberOfPossibleCustomers = 100;
-            customerArray = new Customer[numberOfPossibleCustomers];
-            weeklyForecast = new Weather[totalDays];
-            randNum = new Random();
-
-            // set up customers
-            for (int i = 0; i < numberOfPossibleCustomers; i++)
-            {
-                customerArray[i] = new Customer(randNum);
-            }
+            weeklyForecast = new Weather[totalDays];           
 
             // set up weeklyForecast
             for (int j = 0; j < weeklyForecast.Length; j++)
@@ -46,11 +32,11 @@ namespace Lemonade_Stand_Game
             }
 
             // set up first day -- make method?
-            firstDayWeather = new Weather(false);
+            todaysWeather = new Weather(false);
 
-            if (firstDayWeather.SetWeather())
+            if (todaysWeather.SetWeather())
             {
-                currentDay = new Day(1, firstDayWeather);
+                currentDay = new Day(1, todaysWeather);
             }
             else
             {
@@ -75,10 +61,9 @@ namespace Lemonade_Stand_Game
                 DisplayMainMenu(currentDay, playerOne);
 
                 //end of day
-                DisplayDayResults(currentDay, playerOne, CalculateDailyProfit(playerOne));
-                yesterday = currentDay;
+                DisplayDayResults(currentDay, playerOne, CalculateDailyProfit(playerOne, currentDay.CustomerArray));
+                days[currentDay.DayNumber] = currentDay;
                 Console.ReadLine();
-                gameRunning = !gameRunning; //for testing
                 ContinueGame();
             }
         }
@@ -123,11 +108,13 @@ namespace Lemonade_Stand_Game
             }
         }
 
-        private double CalculateDailyProfit(Player player)
+        private double CalculateDailyProfit(Player player, List<Customer> people)
         {
-            for (int i = 0; i < numberOfPossibleCustomers; i++)
+            int customers = 0;
+
+            for (int i = 0; i < people.Count; i++)
             {
-                if (customerArray[i].BoughtLemonade)
+                if (people[i].BoughtLemonade)
                 {
                     customers++;
                 }

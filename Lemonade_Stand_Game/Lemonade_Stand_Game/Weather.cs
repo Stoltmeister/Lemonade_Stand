@@ -43,8 +43,8 @@ namespace Lemonade_Stand_Game
         }
 
         //methods
-        
-        
+
+
         public bool SetWeather()
         {
             if (!followForecast || isForecast)
@@ -65,7 +65,7 @@ namespace Lemonade_Stand_Game
                 {
                     isSunny = false;
                 }
-                if (dry == 2)
+                if (!isRaining && dry == 2)
                 {
                     isDry = true;
                 }
@@ -75,18 +75,31 @@ namespace Lemonade_Stand_Game
                 }
                 return false; // if bool returns true that means you should set weather to forecasted weather
             }
-            return true;  
-            
-        }       
+            return true;
 
-        // i think this is duplicate?? 
-        private string GetForecast(int days)
+        }
+        
+        public void DisplayWeather()
         {
-            for (int i = 0; i <= days; i++)
+            string weatherText = "";
+            if (isRaining)
             {
-                Weather weather = new Weather(false);
+                weatherText = "raining but the air is quite dry";
             }
-            return "";
+            if (isDry)
+            {
+                weatherText = "dry ";
+            }
+            if (isSunny)
+            {
+                if (weatherText.Length > 1)
+                {
+                    weatherText += "and sunny.";
+                }
+                weatherText += "sunny ";
+            }
+            weatherText += "with an average temperature of " + currentTemperature;
+            Console.WriteLine("The weather for today is " + weatherText);
         }
     }
 }

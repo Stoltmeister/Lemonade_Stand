@@ -18,6 +18,7 @@ namespace Lemonade_Stand_Game
         Day yesterday; // set currentDay to yesterday after all actions for the day are complete
         Customer[] customerArray;
         Weather[] weeklyForecast;
+        Weather firstDayWeather;
         Random randNum;
 
         //constructor
@@ -42,7 +43,9 @@ namespace Lemonade_Stand_Game
                 weeklyForecast[j] = new Weather(true);
             }
 
-            Weather firstDayWeather = new Weather(false);
+            // set up first day -- make method?
+            firstDayWeather = new Weather(false);
+
             if (firstDayWeather.SetWeather())
             {
                 currentDay = new Day(1, firstDayWeather);

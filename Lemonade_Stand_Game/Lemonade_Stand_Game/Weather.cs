@@ -77,13 +77,7 @@ namespace Lemonade_Stand_Game
             }
             return true;  
             
-        }
-
-        private string GetForecast(Day tommorrow)
-        {
-            string forecast = "";
-            return "The forecast for tomorrow is: " + forecast[tommorrow.DayNumber];
-        }
+        }       
 
         private string GetForecast(int days)
         {

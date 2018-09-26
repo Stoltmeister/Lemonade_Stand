@@ -12,7 +12,8 @@ namespace Lemonade_Stand_Game
         Player playerOne;
         bool gameRunning;
         int totalDays;
-        int numberOfCustomers;
+        int numberOfPossibleCustomers;
+        int customers;
         Day currentDay;
         Day yesterday; // set currentDay to yesterday after all actions for the day are complete
         Customer[] customerArray;
@@ -25,13 +26,13 @@ namespace Lemonade_Stand_Game
             gameRunning = true;
             totalDays = 7;
             currentDay = new Day(1);
-            numberOfCustomers = 100;
-            customerArray = new Customer[numberOfCustomers];
+            numberOfPossibleCustomers = 100;
+            customerArray = new Customer[numberOfPossibleCustomers];
             weeklyForecast = new Weather[totalDays];
             randNum = new Random();
 
             // set up customers
-            for (int i = 0; i <= numberOfCustomers; i++)
+            for (int i = 0; i <= numberOfPossibleCustomers; i++)
             {
                 customerArray[i] = new Customer(randNum);
             }
@@ -86,23 +87,31 @@ namespace Lemonade_Stand_Game
             Console.WriteLine("What would you like to do?");
         }
 
-        private void IncrementProfit(Player player, int profit)
+        private void CalculateDailyProfit(Player player)
         {
-            // what is the best way to access this info
-            // 
+            for (int i = 0; i < numberOfPossibleCustomers; i++)
+            {
+                if (customerArray[i].BoughtLemonade)
+                {
+                    customers++;
+                }
+            }
+            double profit = playerOne.PlayerOneStore.CurrentPrice * customers;
+            double expenses = playerOne.PlayerOneStore.GetCostPerPitcher();
+            profit -= expenses;
+            playerOne.PlayerOneStore.currentCash += profit;
         }
 
         private void DisplayDayResults(Day pastDay, Player player)
         {
             // show daily profit/loss, total profit/loss, and weather
             Console.WriteLine("Yesterday " + "");
-        } 
-        
-        // notes:
-        // change all customers percentage of buying when price is
-        // in different ranges (25cent ranges?)
-        //
-        //
-        //
+        }
+
+        private string GetForecast(Day tommorrow)
+        {
+            string forecast = "";
+            return "The forecast for tomorrow is: " + forecast[tommorrow.DayNumber];
+        }        
     }
 }

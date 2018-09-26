@@ -10,15 +10,20 @@ namespace Lemonade_Stand_Game
     {
         //member variables
         string name;
-        Store PlayerOneStore;        
+        Store playerOneStore;
 
         //constructor
         public Player(string name)
         {
             this.name = name;
-            PlayerOneStore = new Store();
+            playerOneStore = new Store();
         }
 
-        //methods        
+        //methods
+
+        public Store PlayerOneStore
+        {
+            get => playerOneStore;
+        }
     }
 }

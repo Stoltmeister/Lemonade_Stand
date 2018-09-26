@@ -13,6 +13,7 @@ namespace Lemonade_Stand_Game
         double maxPrice;
         bool boughtLemonade;
         Random randomNumber;
+
         //constructor
         public Customer(Random randomNumber)
         {
@@ -20,6 +21,11 @@ namespace Lemonade_Stand_Game
         }
 
         //methods
+
+        public bool BoughtLemonade
+        {
+            get => boughtLemonade;
+        }
 
         private void SetBuyingChances(Weather currentWeather, int currentPrice)
         {

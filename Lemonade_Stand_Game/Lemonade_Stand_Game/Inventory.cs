@@ -12,6 +12,9 @@ namespace Lemonade_Stand_Game
         int lemons;
         int cupsOfSugar;
         int iceCubes;
+        double lemonPrice;
+        double sugarPrice;
+        double icePrice;
 
         //constructor
         public Inventory()
@@ -19,9 +22,28 @@ namespace Lemonade_Stand_Game
             lemons = 0;
             cupsOfSugar = 0;
             iceCubes = 0;
+            lemonPrice = .03;
+            sugarPrice = .03;
+            icePrice = .01;
         }
 
         //methods
+
+        public double LemonPrice
+        {
+            get => lemonPrice;
+
+        }
+        public double SugarPrice
+        {
+            get => sugarPrice;
+
+        }
+        public double IcePrice
+        {
+            get => icePrice;
+
+        }
 
         private void DisplayInventory()
         {

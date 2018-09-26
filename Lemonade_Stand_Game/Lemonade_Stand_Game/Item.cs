@@ -14,5 +14,9 @@ namespace Lemonade_Stand_Game
         {
 
         }
+        public int Price
+        {
+            get => price;
+        }
     }
 }

@@ -14,6 +14,7 @@ namespace Lemonade_Stand_Game
         int totalDays;
         int numberOfCustomers;
         Day currentDay;
+        Day yesterday; // set currentDay to yesterday after all actions for the day are complete
         Customer[] customerArray;
         Random randNum;
 
@@ -53,7 +54,8 @@ namespace Lemonade_Stand_Game
         private void DisplayRules()
         {
             // shows rules at start of game
-
+            string rules = "";
+            Console.WriteLine(rules);
         }
 
         private void SetPlayers()
@@ -67,17 +69,22 @@ namespace Lemonade_Stand_Game
         {
             // options: change recipe(hint at user to check first time?), buy supplies, check weeklyForecast, check tomorrows forecast
             // always shows current day number
-
+            Console.WriteLine("Welcome to Day " + currentDay.DayNumber + "! \n" +
+                "Here are the results from the previous day: ");
+            DisplayDayResults(yesterday, playerOne);
+            Console.WriteLine("What would you like to do?")
         }
 
         private void IncrementProfit(Player player, int profit)
         {
-            
+            // what is the best way to access this info
+            // 
         }
 
-        private void DisplayDayResults(Day pastDay)
+        private void DisplayDayResults(Day pastDay, Player player)
         {
-
+            // show daily profit/loss, total profit/loss, and weather
+            Console.WriteLine("");
         } 
         
         // notes:

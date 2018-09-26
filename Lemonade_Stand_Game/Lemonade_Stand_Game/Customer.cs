@@ -15,8 +15,8 @@ namespace Lemonade_Stand_Game
         //constructor
         public Customer(Random randomNumber)
         {
-            // set maxPrice at random within certain range
-            // set buyingChance at random within certain range
+           // use random number to put chance of buying in certain range
+           // 
         }
 
         //methods

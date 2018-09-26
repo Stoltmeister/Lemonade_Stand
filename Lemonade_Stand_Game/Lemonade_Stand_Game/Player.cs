@@ -17,7 +17,6 @@ namespace Lemonade_Stand_Game
         {
             this.name = name;
             PlayerOneStore = new Store();
-
         }
 
         //methods        

@@ -32,7 +32,6 @@ Method Variables:
 - inventory
 	- sugar
 	- lemons
-	- cups
 	- ice
 - player
 	- name

@@ -13,17 +13,21 @@ namespace Lemonade_Stand_Game
         int dayNumber;
 
         //constructor
-        public Day(int dayNumber)
+        public Day(int dayNumber, Weather todaysWeather)
         {
             this.dayNumber = dayNumber;
-
+            this.todaysWeather = todaysWeather;
         }
 
         //methods
         public int DayNumber
         {
             get => dayNumber;
+        }
 
+        public Weather TodaysWeather
+        {
+            get => todaysWeather;
         }
 
     }

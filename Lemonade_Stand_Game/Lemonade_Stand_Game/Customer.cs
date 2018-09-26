@@ -34,7 +34,10 @@ namespace Lemonade_Stand_Game
 
         private void Buy(Day currentDay)
         {
-            // roll to see if they buy            
+            // roll to see if they buy
+            boughtLemonade = false;
+
+            boughtLemonade = true;
         }
     }
 }

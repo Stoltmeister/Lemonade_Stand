@@ -45,7 +45,7 @@ namespace Lemonade_Stand_Game
         //methods
         
         
-        private bool SetWeather()
+        public bool SetWeather()
         {
             if (!followForecast || isForecast)
             {
@@ -79,6 +79,7 @@ namespace Lemonade_Stand_Game
             
         }       
 
+        // i think this is duplicate?? 
         private string GetForecast(int days)
         {
             for (int i = 0; i <= days; i++)

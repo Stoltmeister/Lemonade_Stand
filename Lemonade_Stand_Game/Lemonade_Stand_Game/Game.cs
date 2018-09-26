@@ -24,15 +24,14 @@ namespace Lemonade_Stand_Game
         public Game()
         {            
             gameRunning = true;
-            totalDays = 7;
-            currentDay = new Day(1);
+            totalDays = 7;            
             numberOfPossibleCustomers = 100;
             customerArray = new Customer[numberOfPossibleCustomers];
             weeklyForecast = new Weather[totalDays];
             randNum = new Random();
 
             // set up customers
-            for (int i = 0; i <= numberOfPossibleCustomers; i++)
+            for (int i = 0; i < numberOfPossibleCustomers; i++)
             {
                 customerArray[i] = new Customer(randNum);
             }
@@ -42,6 +41,17 @@ namespace Lemonade_Stand_Game
             {
                 weeklyForecast[j] = new Weather(true);
             }
+
+            Weather firstDayWeather = new Weather(false);
+            if (firstDayWeather.SetWeather())
+            {
+                currentDay = new Day(1, firstDayWeather);
+            }
+            else
+            {
+                currentDay = new Day(1, weeklyForecast[0]);
+            }
+
 
 
         }
@@ -59,7 +69,8 @@ namespace Lemonade_Stand_Game
                 // main menu
                 DisplayMainMenu(currentDay, playerOne);
 
-
+                //end of day
+                yesterday = currentDay;
             }
         }
 
@@ -110,8 +121,9 @@ namespace Lemonade_Stand_Game
 
         private string GetForecast(Day tommorrow)
         {
-            string forecast = "";
-            return "The forecast for tomorrow is: " + forecast[tommorrow.DayNumber];
+            string forecast = "The forecast for tomorrow is: " + weeklyForecast[tommorrow.DayNumber];
+
+            return forecast;
         }        
     }
 }

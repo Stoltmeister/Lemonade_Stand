@@ -19,7 +19,7 @@ namespace Lemonade_Stand_Game
         {
             startingCash = 20.00;
             currentCash = startingCash;
-            recipe = new int[] { 1, 3, 5, 7, 9 };
+            recipe = new int[] { 5, 5, 5 };
         }
         //methods
 
@@ -43,6 +43,13 @@ namespace Lemonade_Stand_Game
             {
                 currentPrice = newPrice;
             }
+        }
+
+        public void DisplayStore()
+        {
+            Console.WriteLine("Your current recipe ratio is " + recipe + " (lemons, cups of sugar, and ice cubes) \n");
+            Console.WriteLine("Current price per cup is set to $" + currentPrice + "\n");
+            Console.WriteLine("Total cash available is $" + currentCash + "\n");
         }
     }
 }

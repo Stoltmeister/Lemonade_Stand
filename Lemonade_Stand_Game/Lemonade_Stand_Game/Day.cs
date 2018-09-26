@@ -10,7 +10,7 @@ namespace Lemonade_Stand_Game
     {
         //member variables
         Weather todaysWeather;
-        int dayNumber;
+        private int dayNumber;
 
         //constructor
         public Day(int dayNumber)

@@ -16,6 +16,7 @@ namespace Lemonade_Stand_Game
         Day currentDay;
         Day yesterday; // set currentDay to yesterday after all actions for the day are complete
         Customer[] customerArray;
+        Weather[] weeklyForecast;
         Random randNum;
 
         //constructor
@@ -26,12 +27,22 @@ namespace Lemonade_Stand_Game
             currentDay = new Day(1);
             numberOfCustomers = 100;
             customerArray = new Customer[numberOfCustomers];
+            weeklyForecast = new Weather[totalDays];
             randNum = new Random();
 
+            // set up customers
             for (int i = 0; i <= numberOfCustomers; i++)
             {
                 customerArray[i] = new Customer(randNum);
             }
+
+            // set up weeklyForecast
+            for (int j = 0; j <= weeklyForecast.Length; j++)
+            {
+                weeklyForecast[j] = new Weather(true);
+            }
+
+
         }
 
         //methods
@@ -72,7 +83,7 @@ namespace Lemonade_Stand_Game
             Console.WriteLine("Welcome to Day " + currentDay.DayNumber + "! \n" +
                 "Here are the results from the previous day: ");
             DisplayDayResults(yesterday, playerOne);
-            Console.WriteLine("What would you like to do?")
+            Console.WriteLine("What would you like to do?");
         }
 
         private void IncrementProfit(Player player, int profit)
@@ -84,7 +95,7 @@ namespace Lemonade_Stand_Game
         private void DisplayDayResults(Day pastDay, Player player)
         {
             // show daily profit/loss, total profit/loss, and weather
-            Console.WriteLine("");
+            Console.WriteLine("Yesterday " + "");
         } 
         
         // notes:

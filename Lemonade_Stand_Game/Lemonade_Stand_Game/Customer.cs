@@ -12,19 +12,23 @@ namespace Lemonade_Stand_Game
         double buyingChance;
         double maxPrice;
         bool boughtLemonade;
+        Random randomNumber;
         //constructor
         public Customer(Random randomNumber)
         {
-           // use random number to put chance of buying in certain range
-           // 
+            this.randomNumber = randomNumber; 
         }
 
         //methods
 
+        private void SetBuyingChances(Weather currentWeather, int currentPrice)
+        {
+            //if (currentWeather.)
+        }
+
         private void Buy(Day currentDay)
         {
-            // changes odds of buying based on weather
-            
+            // roll to see if they buy            
         }
     }
 }

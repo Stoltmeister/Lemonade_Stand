@@ -8,5 +8,10 @@ namespace Lemonade_Stand_Game
 {
     class Sugar : Item
     {
+
+        public Sugar()
+        {
+            price = .01;
+        }
     }
 }

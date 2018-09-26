@@ -44,6 +44,20 @@ namespace Lemonade_Stand_Game
 
         //methods
 
+        public bool IsRaining
+        {
+            get => isRaining;
+        }
+
+        public bool IsDry
+        {
+            get => isDry;
+        }
+
+        public bool IsSunny
+        {
+            get => isSunny;
+        }
 
         public bool SetWeather()
         {

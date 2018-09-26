@@ -8,5 +8,12 @@ namespace Lemonade_Stand_Game
 {
     class Ice : Item
     {
+        int daysToSpoil;
+
+        public Ice()
+        {
+            daysToSpoil = 1;
+            price = .01;
+        }
     }
 }

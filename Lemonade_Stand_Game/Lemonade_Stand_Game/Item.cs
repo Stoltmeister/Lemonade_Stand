@@ -8,13 +8,13 @@ namespace Lemonade_Stand_Game
 {
     public abstract class Item
     {
-        int price;
+        protected double price;
 
         protected Item()
         {
 
         }
-        public int Price
+        public double Price
         {
             get => price;
         }

@@ -21,7 +21,6 @@ namespace Lemonade_Stand_Game
 
         //methods
 
-
         private void DisplayInventory()
         {
             string inventory = "You currently have: ";
@@ -33,23 +32,12 @@ namespace Lemonade_Stand_Game
             Console.WriteLine(inventory);
         }
 
-        private void AddSupplies(int amount, int itemNumber)
+        private void AddProducts(Item product, int amount)
         {
-            if (itemNumber == 1)
+            if (products.Contains(product))
             {
-                lemons += amount;
-            }
-            else if (itemNumber == 2)
-            {
-                cupsOfSugar += amount;
-            }
-            else if (itemNumber == 3)
-            {
-                iceCubes += amount;
-            }
-            else
-            {
-                Console.WriteLine("error error");
+                int i = products.IndexOf(product);
+                amounts[i] += amount;
             }
         }
     }

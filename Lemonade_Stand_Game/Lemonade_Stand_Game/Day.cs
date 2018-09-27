@@ -13,7 +13,7 @@ namespace Lemonade_Stand_Game
         int dayNumber;
         int customers;
         int numberOfPossibleCustomers;
-        List <Customer> customerArray;
+        List <Customer> possibleCustomers;
         Random randNum;
 
         //constructor
@@ -22,14 +22,13 @@ namespace Lemonade_Stand_Game
             this.dayNumber = dayNumber;
             this.todaysWeather = todaysWeather;
             numberOfPossibleCustomers = 100;
-            customerArray = new List <Customer>();
+            possibleCustomers = new List <Customer>();
             randNum = new Random();
-
 
             // set up customers
             for (int i = 0; i < numberOfPossibleCustomers; i++)
-            {                
-                customerArray.Add(new Customer(randNum));
+            {
+                possibleCustomers.Add(new Customer(randNum));
             }
         }
 
@@ -44,9 +43,26 @@ namespace Lemonade_Stand_Game
             get => todaysWeather;
         }
 
-        public List <Customer> CustomerArray
+        public List <Customer> PossibleCustomers
         {
-            get => customerArray;
+            get => possibleCustomers;
+        }
+
+        private double CalculateDailyProfit(Player player)
+        {
+            for (int i = 0; i < possibleCustomers.Count; i++)
+            {
+                if (possibleCustomers[i].BoughtLemonade)
+                {
+                    customers++;
+                }
+            }
+            double profit = player.Store.CurrentPrice * customers;
+            double expenses = player.Store.Recipe.CostPerPitcher;
+            profit -= expenses;
+            player.Wallet.currentCash += profit;
+
+            return profit;
         }
 
     }

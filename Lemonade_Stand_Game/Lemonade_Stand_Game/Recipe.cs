@@ -9,7 +9,8 @@ namespace Lemonade_Stand_Game
     class Recipe
     {
         List<Item> ingredients;
-        List<int> amounts; 
+        List<int> amounts;
+        double costPerPitcher;
 
         public Recipe()
         {            
@@ -18,6 +19,7 @@ namespace Lemonade_Stand_Game
             Ice ice = new Ice();
             ingredients = new List<Item> { lemon, sugar, ice };
             amounts = new List<int> { 3, 3, 3 };
+            costPerPitcher = CalculateCostPerPitcher();
         }
 
         public List<int> Amounts
@@ -27,6 +29,20 @@ namespace Lemonade_Stand_Game
         public List<Item> Ingredients
         {
             get => ingredients;
+        }
+        public double CostPerPitcher
+        {
+            get => costPerPitcher;
+        }
+
+        public double CalculateCostPerPitcher()
+        {
+            for (int i = 0; i < ingredients.Count; i++)
+            {
+                costPerPitcher += ingredients[i].Price * amounts[i];
+            }
+
+            return costPerPitcher;
         }
     }
 }

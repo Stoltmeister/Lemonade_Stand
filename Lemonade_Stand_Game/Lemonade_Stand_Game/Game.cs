@@ -106,26 +106,7 @@ namespace Lemonade_Stand_Game
             {
 
             }
-        }
-
-        //private double CalculateDailyProfit(Player player, List<Customer> people)
-        //{
-        //    int customers = 0;
-
-        //    for (int i = 0; i < people.Count; i++)
-        //    {
-        //        if (people[i].BoughtLemonade)
-        //        {
-        //            customers++;
-        //        }
-        //    }
-        //    double profit = playerOne.PlayerOneStore.CurrentPrice * customers;
-        //    double expenses = playerOne.PlayerOneStore.GetCostPerPitcher();
-        //    profit -= expenses;
-        //    playerOne.PlayerOneStore.currentCash += profit;
-
-        //    return profit;
-        //}
+        }        
 
         private void DisplayDayResults(Day pastDay, Player player, double profit)
         {

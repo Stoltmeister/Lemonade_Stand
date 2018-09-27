@@ -17,18 +17,18 @@ namespace Lemonade_Stand_Game
         bool followForecast;
         Random randomNum;
         int forecastChance;
-        int rain;
-        int sun;
-        int dry;
+        int rainChance;
+        int sunChance;
+        int dryChance;
 
         //constructor
         public Weather(bool isForecast)
         {
             this.isForecast = isForecast;
             randomNum = new Random();
-            rain = randomNum.Next(1, 3);
-            sun = randomNum.Next(1, 3);
-            dry = randomNum.Next(1, 3);
+            rainChance = randomNum.Next(1, 3);
+            sunChance = randomNum.Next(1, 3);
+            dryChance = randomNum.Next(1, 3);
             currentTemperature = randomNum.Next(30, 101);
             forecastChance = randomNum.Next(1, 5);
 
@@ -63,7 +63,7 @@ namespace Lemonade_Stand_Game
         {
             if (!followForecast || isForecast)
             {
-                if (rain == 1)
+                if (rainChance == 1)
                 {
                     isRaining = false;
                 }
@@ -71,7 +71,7 @@ namespace Lemonade_Stand_Game
                 {
                     isRaining = true;
                 }
-                if (!isRaining && sun == 2)
+                if (!isRaining && sunChance == 2)
                 {
                     isSunny = true;
                 }
@@ -79,7 +79,7 @@ namespace Lemonade_Stand_Game
                 {
                     isSunny = false;
                 }
-                if (!isRaining && dry == 2)
+                if (!isRaining && dryChance == 2)
                 {
                     isDry = true;
                 }

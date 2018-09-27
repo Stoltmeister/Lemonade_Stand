@@ -10,14 +10,14 @@ namespace Lemonade_Stand_Game
     {
         //member variables
         double currentPrice;
-        Recipe recipe;        
+        Recipe recipe;
         double costPerPitcher;
         Inventory inventory;
 
         //constructor
         public Store()
         {
-            recipe = new Recipe(); 
+            recipe = new Recipe();
             inventory = new Inventory();
         }
 
@@ -30,16 +30,10 @@ namespace Lemonade_Stand_Game
         public Inventory Inventory
         {
             get => inventory;
-        }
-
-
-        public double GetCostPerPitcher()
+        }        
+        public Recipe Recipe
         {
-           //   costPerPitcher += Supplier. * recipe[0];
-           // costPerPitcher += inventory.SugarPrice * recipe[1];
-           // costPerPitcher += inventory.IcePrice * recipe[2];
-
-            return costPerPitcher;
+            get => recipe;
         }
 
         private void ChangeRecipe()

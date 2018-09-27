@@ -32,6 +32,8 @@ namespace Lemonade_Stand_Game
             {
                 possibleCustomers.Add(new Customer(randNum));
             }
+            // run set buying chances in game class
+
         }
 
         //methods

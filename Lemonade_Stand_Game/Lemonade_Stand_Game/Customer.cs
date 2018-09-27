@@ -40,7 +40,7 @@ namespace Lemonade_Stand_Game
         }
 
         // have to call this probably from game class
-        private void SetBuyingChances(Player player, Day day, List<Weather> weeklyForecast)
+        public void SetBuyingChances(Player player, Day day, Weather[] weeklyForecast)
         {
             if (day.TodaysWeather.IsDry)
             {
@@ -85,7 +85,7 @@ namespace Lemonade_Stand_Game
         }
         
         // run once per day, maybe need to change for 2 player mode***
-        private void Buy()
+        public void Buy()
         {
             if (buyingChance <= randomNumber.Next(1, 100))
             {

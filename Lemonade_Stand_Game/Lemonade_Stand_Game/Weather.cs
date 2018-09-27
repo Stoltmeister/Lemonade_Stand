@@ -22,7 +22,7 @@ namespace Lemonade_Stand_Game
         int dryChance;
 
         //constructor
-        public Weather(bool isForecast)
+        public Weather(bool isForecast, Random random)
         {
             this.isForecast = isForecast;
             randomNum = new Random();
@@ -98,26 +98,30 @@ namespace Lemonade_Stand_Game
 
         }
         
-        public string DisplayWeather(bool isForecast)
+        public string DisplayWeather()
         {
             string weatherText = "";
             if (isRaining)
             {
-                weatherText = "raining but the air is quite dry";
+                weatherText += "Rain.";
             }
             if (isDry)
             {
-                weatherText = "dry ";
+                weatherText += "Dry ";
             }
             if (isSunny)
             {
                 if (weatherText.Length > 1)
                 {
-                    weatherText += "and sunny.";
+                    weatherText += "and sunny. ";
                 }
                 weatherText += "sunny ";
             }
-            weatherText += "with an average temperature of " + averageTemperature;
+            if (weatherText == "")
+            {
+                weatherText = "No rain, not especially sunny or dry.";
+            }
+            weatherText += " The average temperature will be " + averageTemperature;
             return weatherText;
             
         }

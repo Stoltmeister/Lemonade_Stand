@@ -15,7 +15,7 @@ namespace Lemonade_Stand_Game
         Day currentDay;
         Day[] days;
         Weather[] weeklyForecast;
-        Weather todaysWeather;
+        Weather todaysWeather; // is this needed
 
         //constructor
         public Game()
@@ -61,7 +61,7 @@ namespace Lemonade_Stand_Game
                 DisplayMainMenu(currentDay, playerOne);
 
                 //end of day
-                DisplayDayResults(currentDay, playerOne, CalculateDailyProfit(playerOne, currentDay.CustomerArray));
+                // fix ***   DisplayDayResults(currentDay, playerOne, CalculateDailyProfit(playerOne, currentDay.CustomerArray));
                 days[currentDay.DayNumber] = currentDay;
                 Console.ReadLine();
                 ContinueGame();
@@ -108,30 +108,30 @@ namespace Lemonade_Stand_Game
             }
         }
 
-        private double CalculateDailyProfit(Player player, List<Customer> people)
-        {
-            int customers = 0;
+        //private double CalculateDailyProfit(Player player, List<Customer> people)
+        //{
+        //    int customers = 0;
 
-            for (int i = 0; i < people.Count; i++)
-            {
-                if (people[i].BoughtLemonade)
-                {
-                    customers++;
-                }
-            }
-            double profit = playerOne.PlayerOneStore.CurrentPrice * customers;
-            double expenses = playerOne.PlayerOneStore.GetCostPerPitcher();
-            profit -= expenses;
-            playerOne.PlayerOneStore.currentCash += profit;
+        //    for (int i = 0; i < people.Count; i++)
+        //    {
+        //        if (people[i].BoughtLemonade)
+        //        {
+        //            customers++;
+        //        }
+        //    }
+        //    double profit = playerOne.PlayerOneStore.CurrentPrice * customers;
+        //    double expenses = playerOne.PlayerOneStore.GetCostPerPitcher();
+        //    profit -= expenses;
+        //    playerOne.PlayerOneStore.currentCash += profit;
 
-            return profit;
-        }
+        //    return profit;
+        //}
 
         private void DisplayDayResults(Day pastDay, Player player, double profit)
         {
             // show daily profit/loss, total profit/loss, and weather
             Console.WriteLine("Today's profit/loss was $" + profit + "\n");
-            Console.WriteLine("Total profit/loss is $" + player.PlayerOneStore.GetTotalProfit() + "\n");
+            Console.WriteLine("Total profit/loss is $" + player.Wallet.GetTotalProfit + "\n");
         }
 
         private string GetForecast(Day tommorrow)
@@ -148,7 +148,7 @@ namespace Lemonade_Stand_Game
                 // display game results
                 gameRunning = false;
             }
-            else if (playerOne.PlayerOneStore.currentCash < .01)
+            else if (playerOne.Wallet.currentCash < .01)
             {
                 // display game results
                 gameRunning = false;

@@ -9,7 +9,7 @@ namespace Lemonade_Stand_Game
     class Wallet
     {
         double startingCash;
-        double currentCash;
+        public double currentCash;
         double totalProfit;
 
         public Wallet(double startingCash)
@@ -18,9 +18,15 @@ namespace Lemonade_Stand_Game
             currentCash = startingCash;
         }
 
-        public void getTotalProfit()
+        public double StartingCash
         {
-            totalProfit = currentCash - startingCash;
+            get => startingCash;
         }
+
+        public double GetTotalProfit
+        {
+            get => totalProfit;
+        }
+       // totalProfit = currentCash - startingCash;
     }
 }

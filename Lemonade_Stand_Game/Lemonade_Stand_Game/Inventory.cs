@@ -9,50 +9,30 @@ namespace Lemonade_Stand_Game
     class Inventory
     {
         //member variables
-        int lemons;
-        int cupsOfSugar;
-        int iceCubes;
-        double lemonPrice;
-        double sugarPrice;
-        double icePrice;
+        List<Item> products;
+        List<int> amounts;
 
         //constructor
         public Inventory()
         {
-            lemons = 0;
-            cupsOfSugar = 0;
-            iceCubes = 0;
-            lemonPrice = .03;
-            sugarPrice = .03;
-            icePrice = .01;
+            products = new List<Item>();
+            amounts = new List<int>();
         }
 
         //methods
 
-        public double LemonPrice
-        {
-            get => lemonPrice;
-
-        }
-        public double SugarPrice
-        {
-            get => sugarPrice;
-
-        }
-        public double IcePrice
-        {
-            get => icePrice;
-
-        }
 
         private void DisplayInventory()
         {
-            Console.WriteLine("You currently have: " +
-                lemons + " lemons \n" +
-                cupsOfSugar + " cups of sugar \n" +
-                iceCubes + " ice cubes \n");
+            string inventory = "You currently have: ";
+            for (int i = 0; i < amounts.Count; i++)
+            {
+                inventory += amounts[i] + " " + products[i] + " \n";
+            }
+
+            Console.WriteLine(inventory);
         }
-        
+
         private void AddSupplies(int amount, int itemNumber)
         {
             if (itemNumber == 1)

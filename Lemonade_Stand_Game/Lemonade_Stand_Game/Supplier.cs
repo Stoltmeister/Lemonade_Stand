@@ -15,6 +15,11 @@ namespace Lemonade_Stand_Game
             this.products = products;
         }
 
+        public List<Item> Products
+        {
+            get => products;
+        }
+
         public void SellProduct(Player player)
         {
             Console.WriteLine("What product would you like? \n");
@@ -23,6 +28,7 @@ namespace Lemonade_Stand_Game
                 Console.WriteLine(i + ".) " + products[i] + "\n");
             }
             string input = Console.ReadLine();
+            // make a function for these try-catch input checking?
             try
             {
                 int inputChecking = Int32.Parse(input);
@@ -52,8 +58,8 @@ namespace Lemonade_Stand_Game
                 SellProduct(player);
             }
             int quantity = Int32.Parse(input);
-
-            player.PlayerOneStore.currentCash -= products[productIndex].Price * quantity;
+            player.Wallet.currentCash -= products[productIndex].Price * quantity;
+           // player.Store.Inventory.
 
         }
     }

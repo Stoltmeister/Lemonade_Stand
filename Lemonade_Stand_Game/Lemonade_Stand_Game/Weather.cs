@@ -9,7 +9,7 @@ namespace Lemonade_Stand_Game
     class Weather
     {
         //member variables
-        int currentTemperature;
+        int averageTemperature;
         bool isRaining;
         bool isSunny;
         bool isDry;
@@ -29,7 +29,7 @@ namespace Lemonade_Stand_Game
             rainChance = randomNum.Next(1, 3);
             sunChance = randomNum.Next(1, 3);
             dryChance = randomNum.Next(1, 3);
-            currentTemperature = randomNum.Next(30, 101);
+            averageTemperature = randomNum.Next(30, 101);
             forecastChance = randomNum.Next(1, 5);
 
             if (!isForecast && forecastChance == 1)
@@ -57,6 +57,11 @@ namespace Lemonade_Stand_Game
         public bool IsSunny
         {
             get => isSunny;
+        }
+        
+        public int Temperature
+        {
+            get => averageTemperature;
         }
 
         public bool SetWeather()
@@ -112,7 +117,7 @@ namespace Lemonade_Stand_Game
                 }
                 weatherText += "sunny ";
             }
-            weatherText += "with an average temperature of " + currentTemperature;
+            weatherText += "with an average temperature of " + averageTemperature;
             Console.WriteLine("The weather for today is " + weatherText);
         }
     }

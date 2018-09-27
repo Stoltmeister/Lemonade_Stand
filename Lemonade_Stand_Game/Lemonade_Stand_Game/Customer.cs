@@ -13,6 +13,11 @@ namespace Lemonade_Stand_Game
         double maxPrice;
         bool boughtLemonade;
         Random randomNumber;
+        int dryFactor;
+        int rainFactor;
+        int sunFactor;
+        int forecastFactor;
+        int temperatureFactor;
 
         //constructor
         public Customer(Random randomNumber)
@@ -20,6 +25,11 @@ namespace Lemonade_Stand_Game
             this.randomNumber = randomNumber;
             maxPrice = randomNumber.Next(10, 101)/100;
             buyingChance = randomNumber.Next(1, 81);
+            dryFactor = 10;
+            rainFactor = -50;
+            sunFactor = 30;
+            forecastFactor = 20;
+            temperatureFactor = 20;
         }
 
         //methods
@@ -29,25 +39,50 @@ namespace Lemonade_Stand_Game
             get => boughtLemonade;
         }
 
-        private void SetBuyingChances(Weather currentWeather, int currentPrice)
+        private void SetBuyingChances(Player player, Day day, List<Weather> weeklyForecast)
         {
-            if (currentWeather.IsDry)
+            if (day.TodaysWeather.IsDry)
             {
-                buyingChance += 10;
+                buyingChance += dryFactor;
             }
-            if (currentWeather.IsSunny)
+            if (day.TodaysWeather.IsSunny)
             {
-                buyingChance += 25;
+                buyingChance += sunFactor;
             }
-            if (currentWeather.IsRaining)
+            if (day.TodaysWeather.IsRaining)
             {
-                buyingChance -= 30;
+                buyingChance += rainFactor;
             }
-            if (currentPrice > maxPrice || buyingChance < 0)
+            if (weeklyForecast[day.DayNumber].IsRaining && !day.TodaysWeather.IsRaining)
+            {
+                buyingChance -= forecastFactor;
+            }
+            else if (weeklyForecast[day.DayNumber].IsSunny && !day.TodaysWeather.IsDry)
+            {
+                buyingChance += forecastFactor;
+            }
+            if (day.TodaysWeather.Temperature > 85)
+            {
+                buyingChance += temperatureFactor;
+            }
+            if (day.TodaysWeather.Temperature > 70)
+            {
+                buyingChance += temperatureFactor;
+            }
+            if (day.TodaysWeather.Temperature < 60)
+            {
+                buyingChance -= temperatureFactor;
+            }
+            if (day.TodaysWeather.Temperature < 45)
+            {
+                buyingChance -= temperatureFactor;
+            }
+            if (player.Store.CurrentPrice > maxPrice || buyingChance < 0)
             {
                 buyingChance = 0;
             }
         }
+        
 
         private void Buy(Day currentDay)
         {

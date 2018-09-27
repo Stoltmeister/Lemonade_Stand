@@ -58,8 +58,17 @@ namespace Lemonade_Stand_Game
                 SellProduct(player);
             }
             int quantity = Int32.Parse(input);
-            player.Wallet.currentCash -= products[productIndex].Price * quantity;
-           // player.Store.Inventory.
+            if (player.Wallet.currentCash > products[productIndex].Price * quantity)
+            {
+                player.Wallet.currentCash -= products[productIndex].Price * quantity;
+            }
+            else
+            {
+                Console.WriteLine("You only have $" + player.Wallet.currentCash + " and you are trying to buy $" + products[productIndex].Price * quantity + " worth of product");
+                Console.WriteLine("Please press any key to try again!");
+                Console.ReadLine();
+                SellProduct(player);
+            }
 
         }
     }

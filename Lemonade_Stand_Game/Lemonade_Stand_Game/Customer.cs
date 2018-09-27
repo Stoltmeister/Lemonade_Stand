@@ -29,7 +29,7 @@ namespace Lemonade_Stand_Game
             rainFactor = -50;
             sunFactor = 30;
             forecastFactor = 20;
-            temperatureFactor = 20;
+            temperatureFactor = 20;            
         }
 
         //methods
@@ -39,6 +39,7 @@ namespace Lemonade_Stand_Game
             get => boughtLemonade;
         }
 
+        // have to call this probably from game class
         private void SetBuyingChances(Player player, Day day, List<Weather> weeklyForecast)
         {
             if (day.TodaysWeather.IsDry)
@@ -83,14 +84,13 @@ namespace Lemonade_Stand_Game
             }
         }
         
-
-        private void Buy(Day currentDay)
+        // run once per day, maybe need to change for 2 player mode***
+        private void Buy()
         {
-            // need to call this method following the SetBuyingObject on all customer objects
-            // roll to see if they buy
-            // generate randomm number and if it is equal or lower than buying chance then bought = true
-            boughtLemonade = false;
-            boughtLemonade = true;
+            if (buyingChance <= randomNumber.Next(1, 100))
+            {
+                boughtLemonade = true;
+            }          
         }
     }
 }

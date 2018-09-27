@@ -60,7 +60,7 @@ namespace Lemonade_Stand_Game
 
         public void DisplayStore(Player currentPlayer)
         {
-            Console.WriteLine("Your current recipe ratio is " + recipe + " (lemons, cups of sugar, and ice cubes) \n");
+            Console.WriteLine("Your current recipe ratio is " + recipe + " (lemons, cups of sugar, and ice cubes) \n"); // edit
             Console.WriteLine("Current price per cup is set to $" + currentPrice + "\n");
             Console.WriteLine("Total cash available is $" + currentPlayer.Wallet.currentCash + "\n");
         }

@@ -98,7 +98,7 @@ namespace Lemonade_Stand_Game
 
         }
         
-        public void DisplayWeather()
+        public string DisplayWeather(bool isForecast)
         {
             string weatherText = "";
             if (isRaining)
@@ -118,7 +118,8 @@ namespace Lemonade_Stand_Game
                 weatherText += "sunny ";
             }
             weatherText += "with an average temperature of " + averageTemperature;
-            Console.WriteLine("The weather for today is " + weatherText);
+            return weatherText;
+            
         }
     }
 }

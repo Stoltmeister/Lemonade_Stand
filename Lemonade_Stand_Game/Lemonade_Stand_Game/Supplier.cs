@@ -35,16 +35,17 @@ namespace Lemonade_Stand_Game
             }
             catch (Exception)
             {
+                Console.Clear();
                 Console.WriteLine("Incorrect input! Try again. \n");
                 SellProduct(player);
             }
             int productIndex = Int32.Parse(input);
             if (productIndex < 0 || productIndex > products.Count)
             {
+                Console.Clear();
                 Console.WriteLine("Please enter a number between 0 and " + (products.Count - 1) + "\n");
                 SellProduct(player);
             }
-
 
             Console.WriteLine("How many units of " + products[productIndex] + " would you like?");
             input = Console.ReadLine();
@@ -54,6 +55,7 @@ namespace Lemonade_Stand_Game
             }
             catch (Exception)
             {
+                Console.Clear();
                 Console.WriteLine("Incorrect input! Start over. \n");
                 SellProduct(player);
             }
@@ -64,6 +66,7 @@ namespace Lemonade_Stand_Game
             }
             else
             {
+                Console.Clear();
                 Console.WriteLine("You only have $" + player.Wallet.currentCash + " and you are trying to buy $" + products[productIndex].Price * quantity + " worth of product");
                 Console.WriteLine("Please press any key to try again!");
                 Console.ReadLine();

@@ -9,13 +9,13 @@ namespace Lemonade_Stand_Game
     class Inventory
     {
         //member variables
-        List<Item> products;
+        List<Item> allProducts;
         List<int> amounts; // all items in products list, get
-
+        List<Type> checkedTypes;
         //constructor
         public Inventory()
         {
-            products = new List<Item>();
+            allProducts = new List<Item>();
             amounts = new List<int>();
         }
 
@@ -24,10 +24,28 @@ namespace Lemonade_Stand_Game
         // REWORK ****
         public void DisplayInventory()
         {
+            int count = 1;
+            checkedTypes = new List<Type>();
             string inventory = "You currently have: ";
-            for (int i = 0; i < amounts.Count; i++)
+            for (int i = 0; i < allProducts.Count; i++)
             {
-                inventory += amounts[i] + " " + products[i] + " \n";
+                for (int j = i + 1; j < allProducts.Count; j++)
+                {
+                    if (allProducts[i].GetType() == allProducts[j].GetType())
+                    {
+                        if (!checkedTypes.Contains(allProducts[i].GetType()))
+                        {
+                            count++;
+                        }
+                    }
+                }
+                if (count > 1)
+                {
+                    checkedTypes.Add(allProducts[i].GetType());
+                    inventory += count + " " + allProducts[i] + "s \n";
+                    count = 1;
+                }               
+
             }
 
             Console.WriteLine(inventory);
@@ -35,12 +53,11 @@ namespace Lemonade_Stand_Game
 
         public void AddProducts(Item product, int amount)
         {
-            string allItems = "";
-
             for (int i = 0; i < amount; i++)
             {
-                products.Add(product);
+                allProducts.Add(product);
             }
+            DisplayInventory();
         }
     }
 }

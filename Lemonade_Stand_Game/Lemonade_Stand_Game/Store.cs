@@ -34,12 +34,7 @@ namespace Lemonade_Stand_Game
         public Recipe Recipe
         {
             get => recipe;
-        }
-
-        private void ChangeRecipe()
-        {
-            // add 
-        }
+        }        
 
         private void SetPrice(double newPrice)
         {

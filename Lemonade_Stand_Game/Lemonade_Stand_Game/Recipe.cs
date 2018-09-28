@@ -11,12 +11,15 @@ namespace Lemonade_Stand_Game
         List<Item> ingredients;
         List<int> amounts;
         double costPerPitcher;
+        public Cup cup;
 
         public Recipe()
         {
+            // seperate array for each item?
             Lemon lemon = new Lemon();
             Sugar sugar = new Sugar();
             Ice ice = new Ice();
+            cup = new Cup();
             ingredients = new List<Item> { lemon, sugar, ice };
             amounts = new List<int> { 3, 3, 3 };
             costPerPitcher = CalculateCostPerPitcher();
@@ -41,7 +44,7 @@ namespace Lemonade_Stand_Game
             {
                 costPerPitcher += ingredients[i].Price * amounts[i];
             }
-
+            costPerPitcher += cup.Price * 5;
             return costPerPitcher;
         }
 

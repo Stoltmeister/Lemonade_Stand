@@ -10,7 +10,7 @@ namespace Lemonade_Stand_Game
     {
         //member variables
         List<Item> products;
-        List<int> amounts;
+        List<int> amounts; // all items in products list, get
 
         //constructor
         public Inventory()
@@ -21,6 +21,7 @@ namespace Lemonade_Stand_Game
 
         //methods
 
+        // REWORK ****
         public void DisplayInventory()
         {
             string inventory = "You currently have: ";
@@ -32,12 +33,13 @@ namespace Lemonade_Stand_Game
             Console.WriteLine(inventory);
         }
 
-        private void AddProducts(Item product, int amount)
+        public void AddProducts(Item product, int amount)
         {
-            if (products.Contains(product))
+            string allItems = "";
+
+            for (int i = 0; i < amount; i++)
             {
-                int i = products.IndexOf(product);
-                amounts[i] += amount;
+                products.Add(product);
             }
         }
     }

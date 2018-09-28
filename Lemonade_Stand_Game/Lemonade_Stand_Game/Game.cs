@@ -54,16 +54,11 @@ namespace Lemonade_Stand_Game
         {
             // Initial Game Setup
             DisplayRules();
-            SetPlayers();
-            //Weather todaysWeather = new Weather(false);
-            //currentDay = new Day(1, todaysWeather, playerOne.Wallet.currentCash);
-            //Console.WriteLine("Welcome to Day " + currentDay.DayNumber + "! \n");
-            //ExecuteChoice(Menu.DisplayMainMenu());
-            // put in userInterface? OR MENU class
+            SetPlayers();            
 
             // AFTER MVP: two player
-            // options: change recipe(hint at user to check first time?), buy supplies, check weeklyForecast, check tomorrows forecast
             // always shows current day number
+
             //main loop
             while (gameRunning)
             {
@@ -78,15 +73,13 @@ namespace Lemonade_Stand_Game
                 {
                     currentDay = new Day(daynumber, weeklyForecast[0], playerOne.Wallet.currentCash);
                 }
-                Console.WriteLine("Welcome to Day " + currentDay.DayNumber + "! \n");
-                // Display weather
 
+                Console.WriteLine("Welcome to Day " + currentDay.DayNumber + "! \n");
                 ExecuteChoice(Menu.DisplayMainMenu());
 
                 //end of day
                 DisplayDayResults(currentDay, playerOne);
                 daynumber++;
-                Console.ReadLine();
                 ContinueGame();
             }
         }

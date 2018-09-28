@@ -36,7 +36,7 @@ namespace Lemonade_Stand_Game
                 try
                 {
                     int inputChecking = Int32.Parse(input);
-                    if (inputChecking > 0 && inputChecking < products.Count)
+                    if (inputChecking > 0 && inputChecking <= products.Count)
                     {
                         badInput = false;
                         switch (inputChecking)
@@ -81,7 +81,7 @@ namespace Lemonade_Stand_Game
 
             while (badInput)
             {
-                Console.WriteLine("How many Lemons would you like to buy?");
+                Console.WriteLine("How many Lemons would you like to buy? (" + products[0].Price + " each)");
                 string input = Console.ReadLine();
                 try
                 {
@@ -92,6 +92,7 @@ namespace Lemonade_Stand_Game
                     {
                         badInput = false;
                         player.Wallet.currentCash -= totalCost;
+                        player.Store.Inventory.AddProducts(products[productIndex], quantity);
                         Console.WriteLine("You just bought " + quantity + " lemons for " + "$" + totalCost + " \n");
                     }
                     else
@@ -117,7 +118,7 @@ namespace Lemonade_Stand_Game
 
             while (badInput)
             {
-                Console.WriteLine("How many sugar servings would you like to buy?");
+                Console.WriteLine("How many sugar servings would you like to buy? (" + products[1].Price + " each)");
                 string input = Console.ReadLine();
                 try
                 {
@@ -128,6 +129,7 @@ namespace Lemonade_Stand_Game
                     {
                         badInput = false;
                         player.Wallet.currentCash -= totalCost;
+                        player.Store.Inventory.AddProducts(products[productIndex], quantity);
                         Console.WriteLine("You just bought " + quantity + " cups of sugar for " + "$" + totalCost + " \n");
                     }
                     else
@@ -153,7 +155,7 @@ namespace Lemonade_Stand_Game
 
             while (badInput)
             {
-                Console.WriteLine("How many Ice Cubes would you like to buy?");
+                Console.WriteLine("How many Ice Cubes would you like to buy? (" + products[2].Price + " each)");
                 string input = Console.ReadLine();
                 try
                 {
@@ -164,6 +166,7 @@ namespace Lemonade_Stand_Game
                     {
                         badInput = false;
                         player.Wallet.currentCash -= totalCost;
+                        player.Store.Inventory.AddProducts(products[productIndex], quantity);
                         Console.WriteLine("You just bought " + quantity + " Ice Cubes for " + "$" + totalCost + " \n");
                     }
                     else
@@ -200,6 +203,7 @@ namespace Lemonade_Stand_Game
                     {
                         badInput = false;
                         player.Wallet.currentCash -= totalCost;
+                        player.Store.Inventory.AddProducts(products[productIndex], quantity);
                         Console.WriteLine("You just bought " + quantity + " cups for " + "$" + totalCost + " \n");
                     }
                     else

@@ -14,7 +14,7 @@ namespace Lemonade_Stand_Game
         }
         public override string ToString()
         {
-            return "Cups";
+            return "Cup";
         }
     }
 }

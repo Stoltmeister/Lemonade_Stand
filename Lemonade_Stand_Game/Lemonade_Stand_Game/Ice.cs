@@ -17,7 +17,7 @@ namespace Lemonade_Stand_Game
         }
         public override string ToString()
         {
-            return "Ice Cubes";
+            return "Ice Cube";
         }
     }
 }

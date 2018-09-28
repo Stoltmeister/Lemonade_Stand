@@ -56,34 +56,40 @@ namespace Lemonade_Stand_Game
         }
         public void ChangeRecipe()
         {
-            DisplayRecipe();
-            Console.WriteLine("What ingredient would you like to adjust? ");
-            for (int j = 0; j < ingredients.Count; j++)
-            {
-                Console.WriteLine("'" + (j+1) + "'" + ingredients[j] + ", ");
-            }
-            try
-            {
-                int checkInput = Int32.Parse(Console.ReadLine());
-            }
-            catch (Exception)
-            {
-                Console.Clear();
-                Console.WriteLine("Incorrect input! Try again.");
-                ChangeRecipe();
-            }
-            int input = Int32.Parse(Console.ReadLine());
+            bool badInput = true;
+            int goodInput = 1;
 
-            if (input < 1 || input > ingredients.Count)
+            while (badInput)
             {
-                Console.Clear();
-                Console.WriteLine("Input out of range! Try again.");
-                ChangeRecipe();
+                DisplayRecipe();
+                Console.WriteLine("What ingredient would you like to adjust? ");
+                for (int j = 0; j < ingredients.Count; j++)
+                {
+                    Console.WriteLine("'" + (j + 1) + "'" + ingredients[j].ToString() + ", ");
+                }
+                string input = Console.ReadLine();
+                try
+                {
+                    int numberInput = Int32.Parse(input);
+                    if (numberInput > 0 || numberInput < ingredients.Count)
+                    {
+                        badInput = false;
+                    }
+                }
+                catch (Exception)
+                {
+                    Console.Clear();
+                    Console.WriteLine("Incorrect input! Try again.");
+                }
+                if (!badInput)
+                {
+                    goodInput = Int32.Parse(input);
+                }                
             }
 
-            switch(input)
+            switch (goodInput)
             {
-                case 1:                    
+                case 1:
                     amounts[0] = GetAmount(0);
                     break;
                 case 2:
@@ -91,33 +97,33 @@ namespace Lemonade_Stand_Game
                     break;
                 case 3:
                     amounts[2] = GetAmount(2);
-                    break;                
+                    break;
             }
 
         }
 
         private int GetAmount(int i)
         {
-            Console.WriteLine("How many " + ingredients[i] + "should there be per pitcher (serves 5 people) \n");
-            try
-            {
-                int checkInput = Int32.Parse(Console.ReadLine());
-            }
-            catch (Exception)
-            {
-                Console.Clear();
-                Console.WriteLine("Incorrect input! Try again.");
-                GetAmount(i);
-            }
+            
+            bool badInput = true;
 
-            int input = Int32.Parse(Console.ReadLine());
-            if (input > 0)
+            while (badInput)
             {
-                return input;
-            }
-            else
-            {
-                GetAmount(i);
+                Console.WriteLine("How many " + ingredients[i] + "should there be per pitcher (serves 5 people) \n");
+                string input = Console.ReadLine();
+                try
+                {
+                    int checkInput = Int32.Parse(Console.ReadLine());
+                    if (checkInput > 0 && checkInput < 10)
+                    {
+                        return checkInput;
+                    }
+                }
+                catch (Exception)
+                {
+                    Console.Clear();
+                    Console.WriteLine("Please enter a number between '1' - '10'! Try again. \n");                    
+                }
             }
             return 0;
         }

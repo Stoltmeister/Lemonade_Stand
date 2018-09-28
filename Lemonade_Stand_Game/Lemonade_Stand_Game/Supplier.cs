@@ -51,7 +51,7 @@ namespace Lemonade_Stand_Game
             input = Console.ReadLine();
             try
             {
-                int inputChecking = Int32.Parse(Console.ReadLine());
+                int inputChecking = Int32.Parse(input);
             }
             catch (Exception)
             {

@@ -84,7 +84,7 @@ namespace Lemonade_Stand_Game
                 ExecuteChoice(Menu.DisplayMainMenu());
 
                 //end of day
-                // fix ***   DisplayDayResults(currentDay, playerOne, CalculateDailyProfit(playerOne, currentDay.CustomerArray));
+                DisplayDayResults(currentDay, playerOne);
                 daynumber++;
                 Console.ReadLine();
                 ContinueGame();
@@ -97,18 +97,26 @@ namespace Lemonade_Stand_Game
             {
                 case 1:
                     Console.WriteLine("The forecast for tomorrow is " + weeklyForecast[currentDay.DayNumber].DisplayWeather());
+                    Console.WriteLine("\n");
+                    ExecuteChoice(Menu.DisplayMainMenu());
                     break;
                 case 2:
                     for (int i = 0; i < totalDays; i++)
                     {
                         Console.WriteLine("The forecast for day " + (i+1) + ":" + weeklyForecast[i].DisplayWeather());
                     }
+                    Console.WriteLine("\n");
+                    ExecuteChoice(Menu.DisplayMainMenu());
                     break;
                 case 3:
                     playerOne.Store.Recipe.ChangeRecipe();
+                    Console.WriteLine("\n");
+                    ExecuteChoice(Menu.DisplayMainMenu());
                     break;
                 case 4:
                     supplier.SellProduct(playerOne);
+                    Console.WriteLine("\n");
+                    ExecuteChoice(Menu.DisplayMainMenu());
                     break;
                 case 5:
                     // getting the customers
@@ -119,7 +127,7 @@ namespace Lemonade_Stand_Game
                     }                    
                     break;
                 default:
-                    Menu.DisplayMainMenu();
+                    ExecuteChoice(Menu.DisplayMainMenu());
                     break;
             }
         }
@@ -128,10 +136,10 @@ namespace Lemonade_Stand_Game
         {
             // shows rules at start of game
             string rules = "Welcome to the Lemonade Stand Game! \n \n" +
-                "Here are the rules of how to play : \n " +
+                "Here are the rules of how to play : \n \n" +
                 "You are setting up for a week of running a lemonade stand looking to make the most money possible! \n" +
                 "Each day you have the chance to change the recipe, buy supplies and change your price using previous days data to perfect your operation. \n" +
-                "Weather conditions greatly affect the demand for lemonade so make sure to stock your inventory and set prices accordingly \n" +
+                "Weather conditions greatly affect the demand for lemonade so make sure to stock your inventory and set prices accordingly. \n" +
                 "Be sure to check out the daily/weekly forecasts for an idea of what you should do. Be careful though as forecasts aren't always perfect! \n";
 
             Console.WriteLine(rules);
@@ -150,6 +158,7 @@ namespace Lemonade_Stand_Game
             // show daily profit/loss, total profit/loss, and weather
             double profit = player.Wallet.currentCash - pastDay.DayStartingCash;
             Console.WriteLine("Today's profit/loss was $" + profit + "\n");
+            player.Wallet.CalculateTotalProfit();
             Console.WriteLine("Total profit/loss is $" + player.Wallet.GetTotalProfit + "\n");
         }
 
@@ -174,10 +183,16 @@ namespace Lemonade_Stand_Game
             }
         }
 
+        private void GetMoney()
+        {
+            
+        }
+
         // needed methods:
         private void DisplayGameResults()
         {
-            // parameters?
+            Console.WriteLine("");
         }
+
     }
 }

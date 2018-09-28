@@ -54,11 +54,11 @@ namespace Lemonade_Stand_Game
             {
                 buyingChance += rainFactor;
             }
-            if (weeklyForecast[day.DayNumber].IsRaining && !day.TodaysWeather.IsRaining)
+            if (weeklyForecast[day.DayNumber - 1].IsRaining && !day.TodaysWeather.IsRaining)
             {
                 buyingChance -= forecastFactor;
             }
-            else if (weeklyForecast[day.DayNumber].IsSunny && !day.TodaysWeather.IsDry)
+            else if (weeklyForecast[day.DayNumber - 1].IsSunny && !day.TodaysWeather.IsDry)
             {
                 buyingChance += forecastFactor;
             }

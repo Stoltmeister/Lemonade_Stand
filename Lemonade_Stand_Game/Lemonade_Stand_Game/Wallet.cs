@@ -27,6 +27,10 @@ namespace Lemonade_Stand_Game
         {
             get => totalProfit;
         }
-       // totalProfit = currentCash - startingCash;
+       
+        public void CalculateTotalProfit()
+        {
+            totalProfit = currentCash - startingCash;
+        }
     }
 }

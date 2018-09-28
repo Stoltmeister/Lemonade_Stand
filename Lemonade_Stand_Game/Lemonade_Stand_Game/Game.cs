@@ -124,7 +124,8 @@ namespace Lemonade_Stand_Game
                     {
                         currentDay.PossibleCustomers[i].SetBuyingChances(playerOne, currentDay, weeklyForecast);
                         currentDay.PossibleCustomers[i].Buy();
-                    }                    
+                    }
+                    currentDay.CalculateDailyProfit(playerOne);
                     break;
                 default:
                     ExecuteChoice(Menu.DisplayMainMenu());
@@ -181,11 +182,6 @@ namespace Lemonade_Stand_Game
                 DisplayGameResults();
                 gameRunning = false;
             }
-        }
-
-        private void GetMoney()
-        {
-            
         }
 
         // needed methods:

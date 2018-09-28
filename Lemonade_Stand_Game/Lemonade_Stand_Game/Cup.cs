@@ -12,5 +12,9 @@ namespace Lemonade_Stand_Game
         {
             price = .01;
         }
+        public override string ToString()
+        {
+            return "Cups";
+        }
     }
 }

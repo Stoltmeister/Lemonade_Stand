@@ -107,13 +107,13 @@ namespace Lemonade_Stand_Game
             }
             if (isDry)
             {
-                weatherText += "Dry.";
+                weatherText += " Dry.";
             }
             if (isSunny)
             {
                 if (weatherText.Length > 1)
                 {
-                    weatherText = "Dry and sunny.";
+                    weatherText = " Dry and sunny.";
                 }
                 weatherText += " Sunny.";
             }

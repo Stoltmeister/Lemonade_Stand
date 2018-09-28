@@ -15,5 +15,9 @@ namespace Lemonade_Stand_Game
             daysToSpoil = 3;
             price = .05;
         }
+        public override string ToString()
+        {
+            return "Lemons";
+        }
     }
 }

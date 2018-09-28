@@ -56,7 +56,7 @@ namespace Lemonade_Stand_Game
             get => dayStartingCash;
         }
 
-        private double CalculateDailyProfit(Player player)
+        public double CalculateDailyProfit(Player player)
         {
             for (int i = 0; i < possibleCustomers.Count; i++)
             {

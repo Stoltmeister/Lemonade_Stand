@@ -17,6 +17,6 @@ namespace Lemonade_Stand_Game
         public double Price
         {
             get => price;
-        }
+        }        
     }
 }

@@ -21,7 +21,7 @@ namespace Lemonade_Stand_Game
 
         //methods
 
-        private void DisplayInventory()
+        public void DisplayInventory()
         {
             string inventory = "You currently have: ";
             for (int i = 0; i < amounts.Count; i++)

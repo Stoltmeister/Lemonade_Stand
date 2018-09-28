@@ -114,6 +114,7 @@ namespace Lemonade_Stand_Game
                     ExecuteChoice(Menu.DisplayMainMenu());
                     break;
                 case 4:
+                    playerOne.Store.Inventory.DisplayInventory();
                     supplier.SellProduct(playerOne);
                     Console.WriteLine("\n");
                     ExecuteChoice(Menu.DisplayMainMenu());

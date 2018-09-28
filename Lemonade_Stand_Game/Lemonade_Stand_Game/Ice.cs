@@ -15,5 +15,9 @@ namespace Lemonade_Stand_Game
             daysToSpoil = 1;
             price = .01;
         }
+        public override string ToString()
+        {
+            return "Ice Cubes";
+        }
     }
 }

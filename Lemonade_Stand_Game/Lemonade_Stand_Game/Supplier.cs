@@ -128,7 +128,7 @@ namespace Lemonade_Stand_Game
                     {
                         badInput = false;
                         player.Wallet.currentCash -= totalCost;
-                        Console.WriteLine("You just bought " + quantity + " sugars for " + "$" + totalCost + " \n");
+                        Console.WriteLine("You just bought " + quantity + " cups of sugar for " + "$" + totalCost + " \n");
                     }
                     else
                     {

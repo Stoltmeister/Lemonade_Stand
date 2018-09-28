@@ -101,7 +101,7 @@ namespace Lemonade_Stand_Game
                 case 2:
                     for (int i = 0; i < totalDays; i++)
                     {
-                        Console.WriteLine("The forecast for day " + (i+1) + " is" + weeklyForecast[i].DisplayWeather());
+                        Console.WriteLine("The forecast for day " + (i+1) + ":" + weeklyForecast[i].DisplayWeather());
                     }
                     break;
                 case 3:

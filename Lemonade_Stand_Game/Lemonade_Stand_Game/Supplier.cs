@@ -185,7 +185,7 @@ namespace Lemonade_Stand_Game
 
         public void SellCups(Player player)
         {
-            int productIndex = 0;
+            int productIndex = 3;
             int quantity;
             bool badInput = true;
             double totalCost;

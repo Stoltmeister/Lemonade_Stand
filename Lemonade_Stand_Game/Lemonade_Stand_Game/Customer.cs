@@ -79,7 +79,7 @@ namespace Lemonade_Stand_Game
             {
                 buyingChance -= temperatureFactor;
             }
-            //if (player.Store.Recipe.)
+            //recipe factor
             if (player.Store.CurrentPrice > maxPrice || buyingChance < 0)
             {
                 buyingChance = 0;

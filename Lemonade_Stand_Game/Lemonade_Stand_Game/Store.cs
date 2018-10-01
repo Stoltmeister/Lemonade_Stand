@@ -31,11 +31,11 @@ namespace Lemonade_Stand_Game
         public Inventory Inventory
         {
             get => inventory;
-        }        
+        }
         public Recipe Recipe
         {
             get => recipe;
-        }        
+        }
 
         public void SetPrice(double newPrice)
         {
@@ -51,6 +51,47 @@ namespace Lemonade_Stand_Game
             else
             {
                 currentPrice = newPrice;
+            }
+        }
+
+        public double ChangePrice(Player player)
+        {
+            string input = "";
+            do
+            {
+                Console.WriteLine("Current Price Per Cup: $" + player.Store.CurrentPrice + "\n");
+                Console.WriteLine("Would you like to change the price? ('y'/'n')");
+                input = Console.ReadLine();
+            } while (input.ToLower() != "y" && input.ToLower() != "n");
+
+            if (input.ToLower() == "y")
+            {
+                double numberInput = 0;
+                do
+                {
+                    Console.WriteLine("Enter a new price between $.01 - $1");
+                    input = Console.ReadLine();
+                    try
+                    {
+                        numberInput = double.Parse(input);
+                        if (numberInput > 0 && numberInput < 1)
+                        {
+
+                        }
+
+                    }
+                    catch (Exception)
+                    {
+                        Console.WriteLine("Invalid input, please try again.");
+                    }
+                } while (numberInput < .01 || numberInput > 1);
+
+                numberInput = double.Parse(input);
+                return numberInput;
+            }
+            else
+            {
+                return 0;
             }
         }
 

@@ -51,19 +51,13 @@ namespace Lemonade_Stand_Game
         public void CalculateTotalPitchers(Recipe recipe)
         {
             SetAmounts();
+            double lemonsAvailable = amounts[0] / recipe.Amounts[0];
+            double sugarAvailable = amounts[1] / recipe.Amounts[1];
+            double iceAvailable = amounts[2] / recipe.Amounts[2];
+            double cupsAvailable = amounts[3] / 5;
+            double[] itemsAvailable = { lemonsAvailable, sugarAvailable, iceAvailable, cupsAvailable };
 
-            if (amounts[0] < amounts[1] && amounts[0] < amounts[2])
-            {
-                totalPitchers = amounts[0] / recipe.Amounts[0];
-            }
-            else if (amounts[1] < amounts[0] && amounts[1] < amounts[2])
-            {
-                totalPitchers = amounts[1] / recipe.Amounts[1];
-            }
-            else
-            {
-                totalPitchers = amounts[0] / recipe.Amounts[0];
-            }
+            totalPitchers = Convert.ToInt32(Math.Floor(itemsAvailable.Min()));
         }
 
         public int UpdateInventory(int totalCustomers, Recipe recipe)
@@ -85,7 +79,6 @@ namespace Lemonade_Stand_Game
                 {
                     RemoveProducts(itemTypes[i], recipe.Amounts[i] * TotalPitchers);
                 }
-
                 return totalCustomers;
             }
         }
@@ -100,43 +93,28 @@ namespace Lemonade_Stand_Game
                     amount--;
                 }
             }
+            SetAmounts();
         }
 
         public void DisplayInventory()
         {
-            int count = 1;
-            List<Type> checkedTypes = new List<Type>();
-            string inventory = "You currently have: ";
-            for (int i = 0; i < allProducts.Count; i++)
+            SetAmounts();
+            string inventory = "You currently have: \n \n";
+
+            for (int i = 0; i < itemTypes.Count; i++)
             {
-                for (int j = i + 1; j < allProducts.Count; j++)
-                {
-                    if (allProducts[i].GetType() == allProducts[j].GetType())
-                    {
-                        if (!checkedTypes.Contains(allProducts[i].GetType()))
-                        {
-                            count++;
-                        }
-                    }
-                }
-                if (count > 1)
-                {
-                    checkedTypes.Add(allProducts[i].GetType());
-                    inventory += count + " " + allProducts[i] + "s \n";
-                    count = 1;
-                }
-            }
+                inventory += "- " + amounts[i] + " " + itemTypes[i] + "\n";
+            }            
             Console.WriteLine(inventory);
         }
 
         public void AddProducts(Item product, int amount)
         {
-            for (int i = 0; i < itemTypes.Count; i++)
+            for (int i = 0; i < amount; i++)
             {
                 allProducts.Add(product);
             }
             SetAmounts();
-            DisplayInventory();
         }
     }
 }

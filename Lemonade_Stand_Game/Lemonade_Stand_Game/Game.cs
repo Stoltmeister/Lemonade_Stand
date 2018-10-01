@@ -79,6 +79,7 @@ namespace Lemonade_Stand_Game
 
                 //end of day
                 DisplayDayResults(currentDay, playerOne);
+                days[daynumber - 1] = currentDay;
                 daynumber++;
                 ContinueGame();
             }
@@ -113,46 +114,17 @@ namespace Lemonade_Stand_Game
                     ExecuteChoice(Menu.DisplayMainMenu());
                     break;
                 case 5:
-                    string input = "";
-                    do
+                    double newPrice = playerOne.Store.ChangePrice(playerOne);
+                    if (newPrice == 0)
                     {
-                        Console.WriteLine("Current Price Per Cup: $" + playerOne.Store.CurrentPrice + "\n");
-                        Console.WriteLine("Would you like to change the price? ('y'/'n')");
-                        input = Console.ReadLine();
-                    } while (input.ToLower() != "y" && input.ToLower() != "n");
-
-                    if (input.ToLower() == "y")
-                    {
-                        double numberInput = 0;
-                        do
-                        {
-                            Console.WriteLine("Enter a new price between $.01 - $1");
-                            input = Console.ReadLine();
-                            try
-                            {
-                                numberInput = double.Parse(input);
-                                if (numberInput > 0 && numberInput < 1)
-                                {
-
-                                }
-
-                            }
-                            catch (Exception)
-                            {
-                                Console.WriteLine("Invalid input, please try again.");
-                            }
-                        } while (numberInput < .01 || numberInput > 1);
-
-                        numberInput = double.Parse(input);
-                        Console.WriteLine("Your new price is $" + numberInput + "\n");
-                        playerOne.Store.SetPrice(numberInput);
                         ExecuteChoice(Menu.DisplayMainMenu());
                     }
                     else
                     {
-                        ExecuteChoice(Menu.DisplayMainMenu()); 
-                    }
-
+                        Console.WriteLine("Your new price is $" + newPrice + "\n");
+                        playerOne.Store.SetPrice(newPrice);
+                        ExecuteChoice(Menu.DisplayMainMenu());
+                    } 
                     break;
                 case 6:
                     // getting the customers

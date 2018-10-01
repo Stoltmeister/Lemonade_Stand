@@ -1,3 +1,21 @@
+To Do List:
+
+- update amount of products after each customer buys (make sure you have the ingredients)
+- random customers? check values
+- end of game stats
+- add sweetness factor
+- tell user about weather/day 1 show weather
+- quick buy? (initial purchase bundle) 
+- make ingredients go bad
+- 2 player mode
+- weather api
+
+
+
+
+
+
+
 Classes:
 
 - program

@@ -117,34 +117,40 @@ namespace Lemonade_Stand_Game
                     do
                     {
                         Console.WriteLine("Current Price Per Cup: $" + playerOne.Store.CurrentPrice + "\n");
-                        Console.WriteLine("Would you like to change the price? ('Y'/'N')");
+                        Console.WriteLine("Would you like to change the price? ('y'/'n')");
                         input = Console.ReadLine();
-                    } while (input.ToLower() != "y" || input.ToLower() != "n");
+                    } while (input.ToLower() != "y" && input.ToLower() != "n");
 
                     if (input.ToLower() == "y")
                     {
-                        int numberInput = 0;
+                        double numberInput = 0;
                         do
                         {
                             Console.WriteLine("Enter a new price between $.01 - $1");
                             input = Console.ReadLine();
                             try
                             {
-                                numberInput = Int32.Parse(input);
+                                numberInput = double.Parse(input);
                                 if (numberInput > 0 && numberInput < 1)
                                 {
 
                                 }
 
                             }
-                            catch (Exception e)
+                            catch (Exception)
                             {
-                                Console.WriteLine(e.Message + "\n");
+                                Console.WriteLine("Invalid input, please try again.");
                             }
                         } while (numberInput < .01 || numberInput > 1);
 
-
+                        numberInput = double.Parse(input);
+                        Console.WriteLine("Your new price is $" + numberInput + "\n");
                         playerOne.Store.SetPrice(numberInput);
+                        ExecuteChoice(Menu.DisplayMainMenu());
+                    }
+                    else
+                    {
+                        ExecuteChoice(Menu.DisplayMainMenu()); 
                     }
 
                     break;
@@ -155,6 +161,8 @@ namespace Lemonade_Stand_Game
                         currentDay.PossibleCustomers[i].SetBuyingChances(playerOne, currentDay, weeklyForecast);
                         currentDay.PossibleCustomers[i].Buy();
                     }
+                    playerOne.Store.Inventory.CalculateTotalPitchers(playerOne.Store.Recipe);
+                    playerOne.Store.Inventory.UpdateInventory(currentDay.CalculateCustomers(), playerOne.Store.Recipe);
                     currentDay.CalculateDailyProfit(playerOne);
                     break;
                 default:

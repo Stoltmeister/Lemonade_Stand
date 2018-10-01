@@ -32,11 +32,12 @@ namespace Lemonade_Stand_Game
                 {
                     Console.WriteLine((i + 1) + ".) " + products[i] + "\n");
                 }
+                Console.WriteLine(5 + ".) Starter Pack (20 of each item total cost $) \n");
                 string input = Console.ReadLine();
                 try
                 {
                     int inputChecking = Int32.Parse(input);
-                    if (inputChecking > 0 && inputChecking <= products.Count)
+                    if (inputChecking > 0 && inputChecking <= products.Count + 1)
                     {
                         badInput = false;
                         switch (inputChecking)
@@ -52,6 +53,9 @@ namespace Lemonade_Stand_Game
                                 break;
                             case 4:
                                 SellCups(player);
+                                break;
+                            case 5:
+                                SellCombo(player);
                                 break;
                             default:
                                 break;
@@ -217,6 +221,32 @@ namespace Lemonade_Stand_Game
                     Console.Clear();
                     Console.WriteLine("Incorrect input! Try again. \n");
                 }
+            }
+        }
+
+        public void SellCombo(Player player)
+        {
+            double totalCost = 0;
+            int comboAmount = 20;
+            for (int i = 0; i < player.Store.Inventory.itemTypes.Count; i++)
+            {
+                totalCost += player.Store.Inventory.itemTypes[i].Price * comboAmount;
+            }          
+  
+            if (player.Wallet.currentCash > totalCost)
+            {
+                for (int i = 0; i < player.Store.Inventory.itemTypes.Count; i++)
+                {
+                    player.Store.Inventory.AddProducts(products[i], comboAmount);
+                }
+                player.Wallet.currentCash -= totalCost;                
+                Console.WriteLine("You just bought " + comboAmount + " of each item for " + "$" + totalCost + " \n");
+            }
+            else
+            {
+                Console.Clear();
+                Console.WriteLine("You don't have enough cash! Try again. \n");
+                SellCombo(player);
             }
         }
     }

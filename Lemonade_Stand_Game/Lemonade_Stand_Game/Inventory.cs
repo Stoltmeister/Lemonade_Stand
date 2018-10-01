@@ -11,7 +11,7 @@ namespace Lemonade_Stand_Game
         //member variables
         List<Item> allProducts;
         List<int> amounts;
-        List<Item> itemTypes;
+        public List<Item> itemTypes;
         int totalPitchers;
         //constructor
         public Inventory()

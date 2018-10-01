@@ -1,5 +1,6 @@
 To Do List:
 
+- ****** SOLID PRINCIPLES
 - end of game stats
 - add sweetness factor
 - tell user about weather/day 1 show weather 
@@ -9,11 +10,7 @@ To Do List:
 
 
 Bugs:
-
-
-
-
-
+none currently known
 
 Classes:
 
@@ -25,7 +22,7 @@ Classes:
 - player
 - store
 - day
-- userinterface
+- menu
 -------------------------------------
 Method Variables:
 

@@ -67,7 +67,7 @@ namespace Lemonade_Stand_Game
                 weather = new Weather(false, random);
                 if (weather.SetWeather())
                 {
-                    currentDay = new Day(daynumber, weather, playerOne.Wallet.currentCash);
+                    currentDay = new Day(daynumber, weather, playerOne.Wallet.currentCash);                    
                 }
                 else
                 {
@@ -75,6 +75,7 @@ namespace Lemonade_Stand_Game
                 }
 
                 Console.WriteLine("Welcome to Day " + currentDay.DayNumber + "! \n");
+                Console.WriteLine("The weather for today will be: " + currentDay.TodaysWeather.DisplayWeather() + "\n");
                 ExecuteChoice(Menu.DisplayMainMenu());
 
                 //end of day

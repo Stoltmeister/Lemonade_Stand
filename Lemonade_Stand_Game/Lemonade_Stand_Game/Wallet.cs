@@ -16,12 +16,9 @@ namespace Lemonade_Stand_Game
         {
             this.startingCash = startingCash;
             currentCash = startingCash;
+            CalculateTotalProfit();
         }
 
-        public double StartingCash
-        {
-            get => startingCash;
-        }
 
         public double GetTotalProfit
         {

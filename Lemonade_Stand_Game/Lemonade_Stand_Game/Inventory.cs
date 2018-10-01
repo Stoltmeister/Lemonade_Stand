@@ -66,10 +66,10 @@ namespace Lemonade_Stand_Game
 
             if (neededPitchers > totalPitchers)
             {
-                totalCustomers = totalPitchers / 5;
+                totalCustomers = totalPitchers * 5;
                 for (int i = 0; i < amounts.Count - 1; i++)
                 {
-                    RemoveProducts(itemTypes[i], recipe.Amounts[i] * totalCustomers);
+                    RemoveProducts(itemTypes[i], recipe.Amounts[i] * totalPitchers);
                 }
                 return totalCustomers;
             }
@@ -87,7 +87,7 @@ namespace Lemonade_Stand_Game
         {
             for (int i = 0; i < allProducts.Count(); i++)
             {
-                if (allProducts[i].GetType() == product.GetType() && amount > 0)
+                while (allProducts[i].GetType() == product.GetType() && amount > 0)
                 {
                     allProducts.RemoveAt(i);
                     amount--;

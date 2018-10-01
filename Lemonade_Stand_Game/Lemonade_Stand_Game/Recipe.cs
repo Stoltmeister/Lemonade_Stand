@@ -28,11 +28,7 @@ namespace Lemonade_Stand_Game
         public List<int> Amounts
         {
             get => amounts;
-        }
-        public List<Item> Ingredients
-        {
-            get => ingredients;
-        }
+        }        
         public double CostPerPitcher
         {
             get => costPerPitcher;

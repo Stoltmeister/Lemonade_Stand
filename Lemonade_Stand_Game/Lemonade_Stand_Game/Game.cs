@@ -134,8 +134,8 @@ namespace Lemonade_Stand_Game
                         currentDay.PossibleCustomers[i].Buy();
                     }
                     playerOne.Store.Inventory.CalculateTotalPitchers(playerOne.Store.Recipe);
-                    playerOne.Store.Inventory.UpdateInventory(currentDay.CalculateCustomers(), playerOne.Store.Recipe);
-                    currentDay.CalculateDailyProfit(playerOne);
+                    int customers = playerOne.Store.Inventory.UpdateInventory(currentDay.CalculateCustomers(), playerOne.Store.Recipe);
+                    currentDay.CalculateDailyProfit(playerOne, customers);
                     break;
                 default:
                     ExecuteChoice(Menu.DisplayMainMenu());
@@ -197,7 +197,7 @@ namespace Lemonade_Stand_Game
         // needed methods:
         private void DisplayGameResults()
         {
-            Console.WriteLine("");
+            Console.WriteLine("Game results (Code me ;) )");
         }
 
     }

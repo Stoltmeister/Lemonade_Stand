@@ -12,7 +12,7 @@ To Do List:
 
 
 Bugs:
-
+cups dont decrease, others stuck at 2-3? only subtract small amount?
 
 
 

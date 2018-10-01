@@ -24,8 +24,10 @@ namespace Lemonade_Stand_Game
         public Customer(Random randomNumber)
         {
             this.randomNumber = randomNumber;
-            maxPrice = randomNumber.Next(10, 101)/100;
-            buyingChance = randomNumber.Next(1, 81);
+            boughtLemonade = false;
+            maxPrice = randomNumber.Next(10, 101);
+            maxPrice = maxPrice / 100;
+            buyingChance = randomNumber.Next(1, 71);
             dryFactor = 10;
             rainFactor = -50;
             sunFactor = 30;

@@ -19,6 +19,7 @@ namespace Lemonade_Stand_Game
         {
             recipe = new Recipe();
             inventory = new Inventory();
+            currentPrice = .25;
         }
 
         //methods
@@ -36,7 +37,7 @@ namespace Lemonade_Stand_Game
             get => recipe;
         }        
 
-        private void SetPrice(double newPrice)
+        public void SetPrice(double newPrice)
         {
             // max 1 dollar, lowest 1 cent 
             if (newPrice > 1.00)

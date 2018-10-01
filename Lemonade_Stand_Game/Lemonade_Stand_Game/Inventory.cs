@@ -21,7 +21,6 @@ namespace Lemonade_Stand_Game
 
         //methods
 
-        // REWORK ****
         public void DisplayInventory()
         {
             int count = 1;

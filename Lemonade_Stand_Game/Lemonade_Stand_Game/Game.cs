@@ -47,14 +47,14 @@ namespace Lemonade_Stand_Game
                 weeklyForecast[j] = new Weather(true, random);
                 weeklyForecast[j].SetWeather();
             }
-        }      
+        }
 
         //methods
         public void RunGame()
         {
             // Initial Game Setup
             DisplayRules();
-            SetPlayers();            
+            SetPlayers();
 
             // AFTER MVP: two player
             // always shows current day number
@@ -86,7 +86,7 @@ namespace Lemonade_Stand_Game
 
         private void ExecuteChoice(int choice)
         {
-            switch(choice)
+            switch (choice)
             {
                 case 1:
                     Console.WriteLine("The forecast for tomorrow is " + weeklyForecast[currentDay.DayNumber].DisplayWeather());
@@ -96,7 +96,7 @@ namespace Lemonade_Stand_Game
                 case 2:
                     for (int i = 0; i < totalDays; i++)
                     {
-                        Console.WriteLine("The forecast for day " + (i+1) + ":" + weeklyForecast[i].DisplayWeather());
+                        Console.WriteLine("The forecast for day " + (i + 1) + ":" + weeklyForecast[i].DisplayWeather());
                     }
                     Console.WriteLine("\n");
                     ExecuteChoice(Menu.DisplayMainMenu());
@@ -113,6 +113,42 @@ namespace Lemonade_Stand_Game
                     ExecuteChoice(Menu.DisplayMainMenu());
                     break;
                 case 5:
+                    string input = "";
+                    do
+                    {
+                        Console.WriteLine("Current Price Per Cup: $" + playerOne.Store.CurrentPrice + "\n");
+                        Console.WriteLine("Would you like to change the price? ('Y'/'N')");
+                        input = Console.ReadLine();
+                    } while (input.ToLower() != "y" || input.ToLower() != "n");
+
+                    if (input.ToLower() == "y")
+                    {
+                        int numberInput = 0;
+                        do
+                        {
+                            Console.WriteLine("Enter a new price between $.01 - $1");
+                            input = Console.ReadLine();
+                            try
+                            {
+                                numberInput = Int32.Parse(input);
+                                if (numberInput > 0 && numberInput < 1)
+                                {
+
+                                }
+
+                            }
+                            catch (Exception e)
+                            {
+                                Console.WriteLine(e.Message + "\n");
+                            }
+                        } while (numberInput < .01 || numberInput > 1);
+
+
+                        playerOne.Store.SetPrice(numberInput);
+                    }
+
+                    break;
+                case 6:
                     // getting the customers
                     for (int i = 0; i < currentDay.PossibleCustomers.Count; i++)
                     {
@@ -146,7 +182,7 @@ namespace Lemonade_Stand_Game
             string name = Console.ReadLine();
             Console.WriteLine("\n");
             playerOne = new Player(name);
-        }        
+        }
 
         private void DisplayDayResults(Day pastDay, Player player)
         {

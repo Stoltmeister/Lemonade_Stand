@@ -17,12 +17,12 @@ namespace Lemonade_Stand_Game
             {
                 Console.WriteLine("What would you like to do? " +
                 "'1' = Show tomorrows forecast, '2' = Show full week forecast, '3' = Change Recipe \n" +
-                "'4' = Buy Supplies, '5' = Open for the Day");
+                "'4' = Buy Supplies, '5' = Change Price, '6' = Open for the Day");
                 string input = Console.ReadLine();
                 try
                 {
                     int inputCheck = Int32.Parse(input);
-                    if (inputCheck <= 5 && inputCheck >= 1)
+                    if (inputCheck <= 6 && inputCheck >= 1)
                     {
                         badInput = false;
                         return inputCheck;

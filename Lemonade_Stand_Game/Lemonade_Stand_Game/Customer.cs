@@ -18,6 +18,7 @@ namespace Lemonade_Stand_Game
         int sunFactor;
         int forecastFactor;
         int temperatureFactor;
+        int sweetnessFactor;
 
         //constructor
         public Customer(Random randomNumber)
@@ -78,6 +79,7 @@ namespace Lemonade_Stand_Game
             {
                 buyingChance -= temperatureFactor;
             }
+            //if (player.Store.Recipe.)
             if (player.Store.CurrentPrice > maxPrice || buyingChance < 0)
             {
                 buyingChance = 0;

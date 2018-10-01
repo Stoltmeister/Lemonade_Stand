@@ -125,7 +125,7 @@ namespace Lemonade_Stand_Game
                 try
                 {
                     int checkInput = Int32.Parse(input);
-                    if (checkInput > 0 && checkInput < 10)
+                    if (checkInput > 0 && checkInput <= 10)
                     {
                         badInput = false;
                         return checkInput;

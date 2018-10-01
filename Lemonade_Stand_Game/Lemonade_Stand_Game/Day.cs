@@ -67,9 +67,11 @@ namespace Lemonade_Stand_Game
             }
 
             double profit = player.Store.CurrentPrice * customers;
+            Console.WriteLine(customers); //test
+            player.Wallet.currentCash += profit;
             double expenses = player.Store.Recipe.CostPerPitcher;
             profit -= expenses;
-            player.Wallet.currentCash += profit;
+            
 
             return profit;
         }

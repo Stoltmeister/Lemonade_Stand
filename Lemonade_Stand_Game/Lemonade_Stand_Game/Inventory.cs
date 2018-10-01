@@ -71,6 +71,7 @@ namespace Lemonade_Stand_Game
                 {
                     RemoveProducts(itemTypes[i], recipe.Amounts[i] * totalPitchers);
                 }
+                RemoveProducts(itemTypes[3], totalCustomers);
                 return totalCustomers;
             }
             else
@@ -79,6 +80,7 @@ namespace Lemonade_Stand_Game
                 {
                     RemoveProducts(itemTypes[i], recipe.Amounts[i] * TotalPitchers);
                 }
+                RemoveProducts(itemTypes[3], totalCustomers);
                 return totalCustomers;
             }
         }
@@ -91,30 +93,36 @@ namespace Lemonade_Stand_Game
                 {
                     allProducts.RemoveAt(i);
                     amount--;
-                }
+                    if (i == allProducts.Count() - 1)
+                    {
+                        break;
+                    }
+                }                
             }
             SetAmounts();
         }
+        
+    
 
-        public void DisplayInventory()
+    public void DisplayInventory()
+    {
+        SetAmounts();
+        string inventory = "You currently have: \n \n";
+
+        for (int i = 0; i < itemTypes.Count; i++)
         {
-            SetAmounts();
-            string inventory = "You currently have: \n \n";
-
-            for (int i = 0; i < itemTypes.Count; i++)
-            {
-                inventory += "- " + amounts[i] + " " + itemTypes[i] + "\n";
-            }            
-            Console.WriteLine(inventory);
+            inventory += "- " + amounts[i] + " " + itemTypes[i] + "\n";
         }
-
-        public void AddProducts(Item product, int amount)
-        {
-            for (int i = 0; i < amount; i++)
-            {
-                allProducts.Add(product);
-            }
-            SetAmounts();
-        }
+        Console.WriteLine(inventory);
     }
+
+    public void AddProducts(Item product, int amount)
+    {
+        for (int i = 0; i < amount; i++)
+        {
+            allProducts.Add(product);
+        }
+        SetAmounts();
+    }
+}
 }

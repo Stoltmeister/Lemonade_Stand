@@ -32,7 +32,8 @@ namespace Lemonade_Stand_Game
             rainFactor = -50;
             sunFactor = 30;
             forecastFactor = 20;
-            temperatureFactor = 20;            
+            temperatureFactor = 20;
+            sweetnessFactor = 10;
         }
 
         //methods
@@ -45,6 +46,9 @@ namespace Lemonade_Stand_Game
         // have to call this probably from game class
         public void SetBuyingChances(Player player, Day day, Weather[] weeklyForecast)
         {
+            int sugarIndex = 2;
+            int minSugar = 3;
+            int maxSugar = 7;
             if (day.TodaysWeather.IsDry)
             {
                 buyingChance += dryFactor;
@@ -82,6 +86,14 @@ namespace Lemonade_Stand_Game
                 buyingChance -= temperatureFactor;
             }
             //recipe factor
+            if (player.Store.Recipe.Amounts[sugarIndex] > minSugar && player.Store.Recipe.Amounts[sugarIndex] < maxSugar)
+            {
+                buyingChance += sweetnessFactor;
+            }
+            else
+            {
+                buyingChance -= sweetnessFactor;
+            }
             if (player.Store.CurrentPrice > maxPrice || buyingChance < 0)
             {
                 buyingChance = 0;

@@ -198,6 +198,7 @@ namespace Lemonade_Stand_Game
         private void DisplayGameResults()
         {
             Console.WriteLine("Game results (Code me ;) )");
+            Console.ReadLine();
         }
 
     }

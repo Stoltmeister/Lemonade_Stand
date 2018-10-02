@@ -8,13 +8,10 @@ namespace Lemonade_Stand_Game
 {
     class Store
     {
-        //member variables
         double currentPrice;
         Recipe recipe;
-        double costPerPitcher;
         Inventory inventory;
 
-        //constructor
         public Store()
         {
             recipe = new Recipe();
@@ -22,7 +19,6 @@ namespace Lemonade_Stand_Game
             currentPrice = .25;
         }
 
-        //methods
         public double CurrentPrice
         {
             get => currentPrice;
@@ -39,7 +35,6 @@ namespace Lemonade_Stand_Game
 
         public void SetPrice(double newPrice)
         {
-            // max 1 dollar, lowest 1 cent 
             if (newPrice > 1.00)
             {
                 currentPrice = 1.00;
@@ -69,14 +64,14 @@ namespace Lemonade_Stand_Game
                 double numberInput = 0;
                 do
                 {
-                    Console.WriteLine("Enter a new price between $.01 - $1");
+                    Console.WriteLine("Enter a new price between $.01 - $1 : ");
                     input = Console.ReadLine();
                     try
                     {
                         numberInput = double.Parse(input);
-                        if (numberInput > 0 && numberInput < 1)
+                        if (numberInput < 0 || numberInput > 1)
                         {
-
+                            Console.WriteLine("Make sure the price is between .01 - 1 \n");
                         }
 
                     }
@@ -95,9 +90,10 @@ namespace Lemonade_Stand_Game
             }
         }
 
+        // not used
         public void DisplayStore(Player currentPlayer)
         {
-            Console.WriteLine("Your current recipe ratio is " + recipe + " (lemons, cups of sugar, and ice cubes) \n"); // edit
+            Console.WriteLine("Your current recipe ratio is " + recipe + " (lemons, cups of sugar, and ice cubes) \n"); 
             Console.WriteLine("Current price per cup is set to $" + currentPrice + "\n");
             Console.WriteLine("Total cash available is $" + currentPlayer.Wallet.currentCash + "\n");
         }

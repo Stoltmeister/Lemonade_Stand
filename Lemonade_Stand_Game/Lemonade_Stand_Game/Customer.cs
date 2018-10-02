@@ -8,7 +8,6 @@ namespace Lemonade_Stand_Game
 {
     class Customer
     {
-        //member variables
         int buyingChance;
         double maxPrice;
         bool boughtLemonade;
@@ -20,7 +19,6 @@ namespace Lemonade_Stand_Game
         int temperatureFactor;
         int sweetnessFactor;
 
-        //constructor
         public Customer(Random randomNumber)
         {
             this.randomNumber = randomNumber;
@@ -36,14 +34,11 @@ namespace Lemonade_Stand_Game
             sweetnessFactor = 10;
         }
 
-        //methods
-
         public bool BoughtLemonade
         {
             get => boughtLemonade;
         }
-
-        // have to call this probably from game class
+        
         public void SetBuyingChances(Player player, Day day, Weather[] weeklyForecast)
         {
             int sugarIndex = 2;
@@ -85,7 +80,6 @@ namespace Lemonade_Stand_Game
             {
                 buyingChance -= temperatureFactor;
             }
-            //recipe factor
             if (player.Store.Recipe.Amounts[sugarIndex] > minSugar && player.Store.Recipe.Amounts[sugarIndex] < maxSugar)
             {
                 buyingChance += sweetnessFactor;
@@ -100,7 +94,6 @@ namespace Lemonade_Stand_Game
             }
         }
         
-        // run once per day, maybe need to change for 2 player mode***
         public void Buy()
         {
             if (buyingChance <= randomNumber.Next(1, 100))

@@ -74,7 +74,7 @@ namespace Lemonade_Stand_Game
                     currentDay = new Day(daynumber, weeklyForecast[0], playerOne.Wallet.currentCash);
                 }
 
-                Console.WriteLine("Welcome to Day " + currentDay.DayNumber + "! \n");
+                Console.WriteLine("Welcome to Day " + currentDay.DayNumber + " " + playerOne.Name + "! \n");
                 Console.WriteLine("The weather for today will be: " + currentDay.TodaysWeather.DisplayWeather() + "\n");
                 ExecuteChoice(Menu.DisplayMainMenu());
 
@@ -146,7 +146,6 @@ namespace Lemonade_Stand_Game
 
         private void DisplayRules()
         {
-            // shows rules at start of game
             string rules = "Welcome to the Lemonade Stand Game! \n \n" +
                 "Here are the rules of how to play : \n \n" +
                 "You are setting up for a week of running a lemonade stand looking to make the most money possible! \n" +
@@ -167,18 +166,10 @@ namespace Lemonade_Stand_Game
 
         private void DisplayDayResults(Day pastDay, Player player)
         {
-            // show daily profit/loss, total profit/loss, and weather
             double profit = player.Wallet.currentCash - pastDay.DayStartingCash;
             Console.WriteLine("Today's profit/loss was $" + profit + "\n");
             player.Wallet.CalculateTotalProfit();
             Console.WriteLine("Total profit/loss is $" + player.Wallet.GetTotalProfit + "\n");
-        }
-
-        private string GetForecast(Day tommorrow)
-        {
-            string forecast = "The forecast for tomorrow is: " + weeklyForecast[tommorrow.DayNumber];
-
-            return forecast;
         }
 
         private void ContinueGame()
@@ -195,10 +186,11 @@ namespace Lemonade_Stand_Game
             }
         }
 
-        // needed methods:
         private void DisplayGameResults()
         {
-            Console.WriteLine("Game results (Code me ;) )");
+            Console.WriteLine("Game results: \n");
+            Console.WriteLine("Your total profit was: $" + playerOne.Wallet.GetTotalProfit + "\n");
+            Console.WriteLine("Good job ;)             (Any Key to Exit)");
             Console.ReadLine();
         }
 

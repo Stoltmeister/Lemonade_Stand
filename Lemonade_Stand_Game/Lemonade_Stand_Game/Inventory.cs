@@ -8,12 +8,11 @@ namespace Lemonade_Stand_Game
 {
     class Inventory
     {
-        //member variables
         List<Item> allProducts;
         List<int> amounts;
         public List<Item> itemTypes;
         int totalPitchers;
-        //constructor
+
         public Inventory()
         {
             Lemon lemon = new Lemon();
@@ -25,7 +24,6 @@ namespace Lemonade_Stand_Game
             amounts = new List<int>() { 0, 0, 0, 0 };
         }
 
-        //methods
         public int TotalPitchers
         {
             get => totalPitchers;

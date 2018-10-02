@@ -1,11 +1,9 @@
 To Do List:
 
 - ****** SOLID PRINCIPLES
-- end of game stats
-- add sweetness factor
-- tell user about weather/day 1 show weather 
+- end of game stats (display profit for each day, maybe how many spoiled if we get that far)
 - make ingredients go bad
-- 2 player mode
+- 2 player mode (shouldn't be too hard)
 - weather api (not before due LUL)
 
 

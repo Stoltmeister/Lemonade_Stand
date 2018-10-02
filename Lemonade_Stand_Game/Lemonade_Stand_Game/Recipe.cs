@@ -15,7 +15,6 @@ namespace Lemonade_Stand_Game
 
         public Recipe()
         {
-            // seperate array for each item?
             Lemon lemon = new Lemon();
             Sugar sugar = new Sugar();
             Ice ice = new Ice();

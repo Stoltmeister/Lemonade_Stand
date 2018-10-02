@@ -1,0 +1,14 @@
+Solid Principles: 
+
+Single Responsibility Principle:
+
+I made a seperate 'Menu' class because the game class is already quite big and we want a class to do one thing well.
+The Menu class displays a simple text menu, and makes sure the user enters correct input so we know what they want
+to do before delivering their input back to the game class.
+
+Open/Closed Principle:
+
+For My 'Inventory' class I originally only had an array that stored integer values of the quantity of each item. 
+I realized that this would be very frustrating if we wanted to change the items and that you couldn't add spoilage
+(not yet implemented)in the future because you couldn't keep track of each individual product object. So I made a
+list so that one can easily change the amount and type of products in your inventory.

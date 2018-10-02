@@ -8,7 +8,6 @@ namespace Lemonade_Stand_Game
 {
     class Day
     {
-        //member variables
         Weather todaysWeather;
         int dayNumber;
         int customers;
@@ -17,7 +16,6 @@ namespace Lemonade_Stand_Game
         List<Customer> possibleCustomers;
         Random randNum;
 
-        //constructor
         public Day(int dayNumber, Weather todaysWeather, double dayStartingCash)
         {
             this.dayNumber = dayNumber;
@@ -27,16 +25,13 @@ namespace Lemonade_Stand_Game
             possibleCustomers = new List<Customer>();
             randNum = new Random();
 
-            // set up customers
             for (int i = 0; i < numberOfPossibleCustomers; i++)
             {
                 possibleCustomers.Add(new Customer(randNum));
             }
-            // run set buying chances in game class
 
         }
 
-        //methods
         public int DayNumber
         {
             get => dayNumber;
